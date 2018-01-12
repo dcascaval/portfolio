@@ -167,7 +167,7 @@ function mobileSpring (dir, num, cen, off){
 		  {
 			addLink(xCen,yCen,dir,i);
 			var xT = xCen;
-			var yT = yCen + (i*off)+pic_w;
+			var yT = yCen + (2*i*off)+pic_w;
 			sTargs.push([xT, yT]);
 			origins.push([xCen, yCen]);
 		  }

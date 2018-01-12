@@ -183,10 +183,14 @@ function reShape(){
 		}
 	}
 	else{
+		var l1 = getOffset(document.getElementById("logo")).height;
+		var l2 = getOffset(document.getElementById('logo_i')).height;
+		var testOff = Math.max(l1,l2);
+		var xOff = Math.max(testOff - (h * 0.25),0);
 		for (elem of elems) elem.style.left = ((w * 0.50) - off) + "px";
-		elems[0].style.top = ((h * 0.25) - off) + "px";
-		elems[1].style.top = ((h * 0.60) - off) + "px";
-		elems[2].style.top = ((h * 0.95) - off) + "px";
+		elems[0].style.top = ((h * 0.25) + xOff - off) + "px";
+		elems[1].style.top = ((h * 0.60) + xOff - off) + "px";
+		elems[2].style.top = ((h * 0.95) + xOff - off) + "px";
 		for (pic of pics){
 			pic.style.width = (Math.min(250,h/3 - 50)) + "px";
 			pic.style.height = (Math.min(250,h/3 - 50)) + "px";
@@ -197,6 +201,10 @@ function reShape(){
 }
 
 window.onload = function(e){ 
+    reShape();
+}
+
+window.onpageshow = function(e){ 
     reShape();
 }
 
