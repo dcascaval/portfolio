@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Architecture and Computational Design">
+<meta name="keywords" content="Architecture, Design, Computation, Environment, Research">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">	
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/landing.css">
+<meta name="author" content="Dan Cascaval">
+
+<title>Dan Cascaval</title>
+
+<link rel="icon" type="image/png" sizes="32x32" href="../thumbs/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../thumbs/favicon-96x96.png">
+
+</head>
+<body>
+<!-- Bootstrap Header - Find more elegant solution?--> 
+	<div class="container-fluid">
+		<div class="row">
+			
+			<div class="col-xs-9 col-sm-7 col-md-6">
+				<img id="logo" src="images/logo.svg" alt="Dan Cascaval">
+				<img id="logo_i" src="images/logo_inverted.svg">
+			</div>
+			
+			<div class="navbar-wrapper"> <!--Contains link row. Dropdown activated at sm breakpoint-->
+				
+				<div id="hidden">
+					<div class="btn-group">
+					  <button type="button" class="btn" data-toggle="dropdown">+</button>
+					  <div class="dropdown-menu dropdown-menu-right">
+					    <a class="dropdown-item transition" href="index.html"> projects </a>
+					    <a class="dropdown-item" href="pdf/dan_cascaval_resume_cs.pdf"> resume </a>
+					    <a class="dropdown-item transition" href="projects/bio.html"> about</a>
+						<a class="dropdown-item" href="mailto:cascaval@cmu.edu"> contact </a>
+					  </div>
+					</div>
+				</div>
+				
+				<div id="expanded">	
+					<ul class="nav navbar-nav">
+						<li class="nav-item"><a class="nav-link transition" href="index.html"> projects </a></li>
+						<li class="nav-item"><a class="nav-link transition" href="pdf/dan_cascaval_resume_cs.pdf"> resume </a></li>
+						<li class="nav-item"><a class="nav-link transition" href="projects/bio.html"> about </a></li>
+						<li class="nav-item"><a class="nav-link" href="mailto:cascaval@cmu.edu"> contact </a></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+
+
+<div class ="animate" id = "a"  onclick="mainMove('a');">
+	<img class="pic" id = "apic" src="thumbs/saco_thumb.jpg">
+	<p class="label">Design</p>
+</div>
+<div class ="animate" id = "b"  onclick="mainMove('b');">
+	<img class="pic" id = "bpic" src="thumbs/code_thumb.jpg">
+	<p class="label">Code</p>
+</div>
+<div class ="animate" id = "c"  onclick="mainMove('c');">
+	<img class="pic" id = "cpic" src="thumbs/dfab_thumb.jpg">
+	<p class="label">Make</p>
+</div>
+
+
+<div class ="code item">
+	<a class="sublink" href="projects/impala.html">
+		<p> Impala </p>
+		<p> Multithreaded Components for Grasshopper </p>
+	</a>
+</div>
+<div class ="code item">
+	<a class="sublink" href="projects/synth.html">
+		<p> Synthetica </p>
+		<p> Procedural Ecologic Simulation </p>
+	</a>
+</div>
+<div class ="code item">
+	<a class="sublink" href="projects/param.html">
+	<p> Parametric Modeling </p>
+	<p> Reponsive Structures and Animations </p>
+	</a>
+</div>
+<div class ="code item">
+	<a class="sublink" href ="#">
+		<p> Sentient Concrete </p>
+		<p> Thermal Simulation and Pattern Generation </p>
+	</a>
+</div>
+
+
+<div class ="arc item">
+	<a class="sublink" href="projects/media.html">
+	<p> Digital Drawing </p>
+	<p> Selected Renderings and Digital Models</p>
+	</a>
+</div>
+<div class ="arc item">
+	<a class="sublink" href="projects/exm.html">
+	<p> Experimental Media </p>
+	<p> Urban Incubator + Stimulator, Geometric Interaction</p>
+	</a>
+</div>
+<div class ="arc item">
+	<a class="sublink" href="projects/saco.html">
+	<p> <strong>Saco Lake Baths</strong> </p>
+	<p> Rural Project, Materiality and Atmosphere</p>
+	</a>
+</div>
+<div class ="arc item">
+	<a class="sublink" href="projects/ma.html">
+	<p> Materials and Assembly </p>
+	<p> Selected Technical and Construction Drawings</p>
+	</a>
+</div>
+<div class ="arc item">
+	<a class="sublink" href="projects/grow.html">
+	<p> Grow Collective </p>
+	<p> Urban Agriculture Center for Grow Pittsburgh</p>
+	</a>
+</div>
+<div class ="arc item">
+	<a class="sublink" href="projects/morph.html">
+	<p> Morph </p>
+	<p> Hunt Library Extension and Redesign</p>
+	</a>
+</div>
+
+
+<div class ="fab item">
+	<a class="sublink" href="#">
+		<p> Sentient Concrete </p>
+		<p> Thermally-Responsive Embedded Paneling Systems</p>
+	</a>
+</div>
+<div class ="fab item">
+	<a class="sublink" href="projects/dfab.html">
+	<p> Digital Fabrication </p>
+	<p> Machining, Printing, and Forming</p>
+	</a>
+</div>
+<div class ="fab item">
+	<a class="sublink" href="projects/hoop.html">
+	<p> Hoop House </p>
+	<p> Resuable, Lightweight Urban Greenhouse Fixture</p>
+	</a>
+</div>
+<div class ="fab item">
+	<a class="sublink" href="projects/span.html">
+	<p> Span </p>
+	<p> Architectural Tectonics and Wooden Fabrication</p>
+	</a>
+</div>
+
+<!-- Configures responsive page layout for animation setup -->
+<script language="javascript">
+function getOffset(el) {
+	  el = el.getBoundingClientRect();
+	  return {
+	    left: el.left + window.scrollX,
+	    top: el.top + window.scrollY,
+		width: el.width,
+		height: el.height
+	  }
+	}	
+
+function reShape(){
+    var elems = document.getElementsByClassName("animate");
+	var w = window.innerWidth;
+	var h = window.innerHeight;
+	var off = (getOffset(elems[0]).width/2);
+	var pics = document.getElementsByClassName("pic");
+	if (w > h){
+		for (elem of elems) elem.style.top = 250 + "px";
+		elems[0].style.left = ((w * 0.25) - off) + "px";
+		elems[1].style.left = ((w * 0.50) - off) + "px";
+		elems[2].style.left = ((w * 0.75) - off) + "px";
+		for (pic of pics){
+			pic.style.width = Math.min(250,(w/4)-25) + "px";
+			pic.style.height = Math.min(250,(w/4)-25) + "px";
+		}
+	}
+	else{
+		for (elem of elems) elem.style.left = ((w * 0.50) - off) + "px";
+		elems[0].style.top = ((h * 0.25) - off) + "px";
+		elems[1].style.top = ((h * 0.60) - off) + "px";
+		elems[2].style.top = ((h * 0.95) - off) + "px";
+		for (pic of pics){
+			pic.style.width = (Math.min(250,h/3 - 50)) + "px";
+			pic.style.height = (Math.min(250,h/3 - 50)) + "px";
+		}
+	}
+	
+	
+}
+
+window.onload = function(e){ 
+    reShape();
+}
+
+window.onresize = function(e){ 
+	reShape();
+}
+
+
+
+</script>
+<!-- SVG Library and animator script -->
+<script src = "js/svg.js"></script>
+<script src = "js/animate.js"></script>
+
+</body>
+</html>
+

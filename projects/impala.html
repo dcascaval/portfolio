@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="description" content="Architecture and Computational Design">
+	<meta name="keywords" content="Architecture, Design, Computation, Environment, Research">
+	<meta name="author" content="Dan Cascaval">
+	
+	<title>Dan Cascaval - Impala</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="../thumbs/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../thumbs/favicon-96x96.png">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="../css/page.css">
+	
+</head>
+
+<body>
+	
+<!-- Header -->
+	
+	<div class="container-fluid">
+		<div class="row">
+			
+			<div class="col-xs-9 col-sm-7 col-md-6">
+				<a class="transition" href="../index.html">
+				<img id="logo" src="../images/logo_inverted.svg" alt="Dan Cascaval">
+				</a>
+			</div>
+			
+			<div class="navbar-wrapper"> <!--Contains link row. Dropdown activated at sm breakpoint-->
+				
+				<div id="hidden">
+					<div class="btn-group">
+					  <button type="button" class="btn" data-toggle="dropdown">+</button>
+					  <div class="dropdown-menu dropdown-menu-right">
+					    <a class="dropdown-item transition" href="../index.html"> projects </a>
+					    <a class="dropdown-item" href="../pdf/dan_cascaval_resume_cs.pdf"> resume </a>
+					    <a class="dropdown-item transition" href="../bio.html"> about </a>
+						<a class="dropdown-item" href="mailto:cascaval@cmu.edu"> contact </a>
+					  </div>
+					</div>
+				</div>
+				
+				<div id="expanded">	
+					<ul class="nav navbar-nav">
+						<li class="nav-item"><a class="nav-link transition" href="../index.html"> projects </a></li>
+						<li class="nav-item"><a class="nav-link" href="../pdf/dan_cascaval_resume_cs.pdf"> resume </a></li>
+						<li class="nav-item"><a class="nav-link transition" href="../bio.html"> about </a></li>
+						<li class="nav-item"><a class="nav-link" href="mailto:cascaval@cmu.edu"> contact </a></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+
+<hr>
+<br>
+
+<!-- Content -->
+	<div class="container">
+		
+		<!-- Header Image -->
+		<div class="module">
+			<img class="img-circle img-fluid" id="top" src="../thumbs/impala_thumb.jpg" alt="Impala">
+			<div class="submodule">
+				<div class="headlabel">Impala</div>
+			</div>
+		</div>
+		
+		<!-- Overview Text -->
+		<div class="row">
+            <p> Introducing Impala - a <strong>multithreaded C# component</strong> library for Grasshopper. Impala replicates common bottleneck operations with a focus on efficiency, allowing complex scripts and simulations to make use of all available computational capacity. This is primarily beneficial for scripts that deal with thousands of objects or rely on <strong>physical operations</strong> or information.</p>
+            
+            <p>Impala focuses primarily on replicating existing Grasshopper functionality and developing an environment suitable to <strong>seamless integration of multithreaded computation</strong> within Grasshopper. To this end it currently contains two types of components:</p>
+
+            <ul>
+                <li>Components that perform identical (or nearly identical) operations to existing Grasshopper components, but do so using a parallel strategy or a better algorithmic complexity (ex: <code>Closest Point</code>, <code>Halton</code>)</li>
+                <li>Components that replicate expensive Grasshopper operation sets and use imperative methods to signifcantly reduce the time and memory needed to obtain a result (ex: <code>Closest Curve Closest Point</code>, <code>MeshFlow</code>)</li>
+            </ul>
+            
+            <p>Impala intends to provide as seamless an experience as possible, and does so by using nullable types and internally maintaining the structure of input data in the same way that Grasshopper does. It additionally aims to <strong>improve performance by exposing “threshold” parameters</strong> wherever possible - allowing the user to specify under which conditions they do not want the result of an operation, signifcantly speeding up the computation in these cases.</p>
+
+            <p>However, despite these advances, Impala’s parallelism is not (yet!) fully implicit. The by-item looping behaviour of most GH components is not suited to parallel operations, since the solve-instance method does not have access to all the necessary data simultaneously. </p>
+
+            <p>Several components aim to take advantage of Grasshopper’s implicit data looping, and thus contain specifcations to input certain data “as list” and “as item” in order to advantage certain types of parallelism. These are made explicit in the component inputs to mitigate unexpected behaviour.</p>
+		</div>
+
+		<div class="row">
+			<div class="offset-xs-1 col-xs-10">
+				<p class="caption">[-] List Object Model - Implicit Loops</p>
+				<img class="img-fluid" src="../images/impala_list.jpg" alt="material model">
+			</div>
+		</div>
+
+		<div class = "row">
+            <p>For example, it is common that <code>CurveCP</code> will operate on a list of points relative to a single curve, for example when extracting parameters for a sorting operation. Therefore the Impala analogue (<code>parCurveCP</code>) currently operates on a list-to-item basis to execute each <code>CurveCP</code> operation independently, without accessing the entire tree structure. This model is lean - it uses no additional information and maintains a simplicity in its internal stucture. However, it sufers from performance reduction when applied to a tree of inputs where each point interacts with a separate curve. Additionally, it is limited to “one-to-one” operations - where one input results in one (and only one) output.</p>
+		</div>
+
+		<div class="row">
+			<div class="offset-xs-1 col-xs-10">
+				<p class="caption">[-] Tree Object Model - Explicit</p>
+				<img class="img-fluid" src="../images/impala_tree.jpg" alt="exterior rendering">
+				
+			</div>
+		</div>
+
+		<div class="row">
+			<p> Other components, however, illustrate a different model to structure the operation. Instead of specifying list vs. item operations, the Divide Length component, <code>parDivLen</code>, intakes the entire input tree simultaneously. It then packages the necessary structural information for each instance of the computation into a custom class instance. A single array of these is then operated on in parallel, optimising the bulk of the computational expense. The data is then extracted from the class and (thread-safely) inserted into the main data structure, which is agnostic to the order in which operations occur or the structure of the incoming or outgoing data. While (just) slightly slower, the Tree-Object model offers a “general case” solution to the problem. In the case of <code>parDivLen</code>, it allows data trees of any shape to be restructured and mapped to a new shape while still maximizing opportunity for parallel operations.</p>
+		</div>
+
+		<div class="row">
+			<p>In the future, Impala will implement all operations to utilise the Tree-Object model, and potentially expose particular optional parameters which will allow the user to tune how the packaging works in order to optimise their particular use-case. It is the primary goal of Impala to extend Grasshopper’s capabilities (by allowing a wider range of expensive operations) while maintaining the prototyping flexibility that GH’s associative model and robust ecosystem lends to designers in the early stages.</p>
+
+			<p>While Impala has been tested and performs as expected on standard inputs, parallelism makes it more difficult to react when things go wrong, and the component may not always react safely to invalid inputs. The more egregious cases (wrong data types) are guarded against, but null-inputs may cause hidden problems to arise in unexpected out-puts, whereas Grasshopper would simply be able to output a null object. A set of test files provide examples (and guarantees of correctness) for all Impala components, as well as a short set of analysis notes for each of them specifying particularly helpful use-cases. These, along with the source code, are available <a href="www.github.com/dcascaval/impala">on Github.</a></p>
+
+			<p>Additional goals for future development include:</p>
+			<ul>
+				<li>Composition of other expensive operations (occlusion, intersection, etc.)</li>
+				<li>Automated integration of Impala components in the form of a macro that searches for locations in a script where Impala could improve GH functionality and substituting the analogous component.</li>
+				<li>Allowing inter-component parallelism within a group. By maintaining constant inputs and outputs in a group of components, their operation set can be run in parallel, making use of Grasshopper’s already visually-explicit data-dependency graph to structure the computation.</li>
+			</ul>
+
+		</div>
+
+		<div class="row">
+			<div class="offset-xs-1 col-xs-10">[
+				<p class="caption">[-] Mesh Flow Simulation </p>
+				<img class="img-fluid" src="../images/impala_meshflow.jpg" alt="">		
+			</div>
+		</div>
+
+	</div>
+				
+<hr>
+<!-- Footer -->
+<p id="foot"> made with love and html. &copy; Dan Cascaval, All rights reserved.</p>
+
+
+<!-- Provides toggling function for visible images -->
+<script>
+function setCharAt(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substr(0,index) + chr + str.substr(index+1);
+}
+
+window.onload = function(e){ 
+	var captions = document.querySelectorAll('.caption');
+	for (caption of captions){
+    	caption.onclick = function(){
+			var sibling = this.nextElementSibling;
+			var vis = sibling.style.display;
+			if (vis != "none")
+			{
+				sibling.style.display = "none";
+				this.innerHTML = setCharAt(this.innerHTML,1,"+");
+			}
+			else{
+				sibling.style.display = "block";
+				this.innerHTML = setCharAt(this.innerHTML,1,"-");
+			}
+		};
+	}
+}
+</script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<script src="js/bootstrap.js"></script>
+
+</body>
