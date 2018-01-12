@@ -75,3 +75,17 @@ body{
 	font-family: Courier, monospace;
 	font-size: 14px;
 }
+
+
+.droppedElem{
+	position: absolute;
+}
+
+.droppedElem:hover{
+	text-decoration: underline;
+}
+
+.bigger{
+	width:50px;
+	height:50px;
+}

@@ -262,3 +262,14 @@ object{
 	float:right !important;
 }
 
+.drophide{
+	min-width:30px;
+	min-height:30px;
+	text-align: center;
+	font-size: 18px;
+	margin-top: 10px;
+	margin-right: 20px;
+	border: 1px solid;
+	border-radius: 20px;
+}
+

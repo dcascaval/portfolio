@@ -31,14 +31,8 @@
 			<div class="navbar-wrapper"> <!--Contains link row. Dropdown activated at sm breakpoint-->
 				
 				<div id="hidden">
-					<div class="btn-group">
-					  <button type="button" class="btn" data-toggle="dropdown">+</button>
-					  <div class="dropdown-menu dropdown-menu-right">
-					    <a class="dropdown-item transition" href="index.html"> projects </a>
-					    <a class="dropdown-item" href="pdf/dan_cascaval_resume_cs.pdf"> resume </a>
-					    <a class="dropdown-item transition" href="projects/bio.html"> about</a>
-						<a class="dropdown-item" href="mailto:cascaval@cmu.edu"> contact </a>
-					  </div>
+					<div class="bigger" onclick="menuDrop();">
+						<div class="drophide"> + </div>
 					</div>
 				</div>
 				
@@ -90,7 +84,7 @@
 	</a>
 </div>
 <div class ="code item">
-	<a class="sublink" href ="#">
+	<a class="sublink" href ="projects/sentient.html">
 		<p> Sentient Concrete </p>
 		<p> Thermal Simulation and Pattern Generation </p>
 	</a>
@@ -136,7 +130,7 @@
 
 
 <div class ="fab item">
-	<a class="sublink" href="#">
+	<a class="sublink" href="projects/sentient2.html">
 		<p> Sentient Concrete </p>
 		<p> Thermally-Responsive Embedded Paneling Systems</p>
 	</a>
@@ -184,8 +178,8 @@ function reShape(){
 		elems[1].style.left = ((w * 0.50) - off) + "px";
 		elems[2].style.left = ((w * 0.75) - off) + "px";
 		for (pic of pics){
-			pic.style.width = Math.min(250,(w/4)-25) + "px";
-			pic.style.height = Math.min(250,(w/4)-25) + "px";
+			pic.style.width = Math.min(250,(w/4)-50) + "px";
+			pic.style.height = Math.min(250,(w/4)-50) + "px";
 		}
 	}
 	else{
@@ -210,12 +204,17 @@ window.onresize = function(e){
 	reShape();
 }
 
+var dropped = false;
 
 
 </script>
 <!-- SVG Library and animator script -->
 <script src = "js/svg.js"></script>
 <script src = "js/animate.js"></script>
+
+<script>
+
+</script>
 
 </body>
 </html>
