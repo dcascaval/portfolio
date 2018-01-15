@@ -8,7 +8,7 @@ function getOffset(el) {
 	}
   }	
 
-
+//USE CSS TRANSFORMS 
 
 function ease(t) { 
 	return t<.5 ? 2*t*t : -1+(4-2*t)*t;
@@ -18,75 +18,81 @@ var moved = false;
 var orgs = []; var yOrgs = [];
 var times = 0; 
 var draw;
-
+var animTime = 1000;
 var click = true;
+
+var starttime
+ 
+
 
 function posAnimator (frames, eList, starts, targs, rev, speed = 1)
 {
-	var pos = 0;
 	var num = eList.length;
-	
-	var id = setInterval(func, 5);
-  	function func ()
-	{
-  		if (pos >= frames)
+
+	function moveit(timestamp, eList, starts, targs, num, rev, duration){
+		var runtime = timestamp - starttime;
+		var e  = ease(Math.min(runtime / duration, 1));
+		var op = rev ? 1 - e : e;
+		for (var i = 0; i < num; i++)
 		{
-  			clearInterval(id);
-  		}
-  		else
-		{
-  			pos += speed;
-  			var e = ease(pos/frames);
-			var op = rev ? 1 - e : e;
-  				for (var i = 0; i < num; i++)
-  				{
-					var j = i % starts.length;
-					var k = i % targs.length;
-					var xPos = starts[j][0] + ((targs[k][0]-starts[j][0])*e);
-  					var yPos = starts[j][1] + ((targs[k][1]-starts[j][1])*e);
-					eList[i].style.left = xPos + "px";
-  					eList[i].style.top = yPos + "px";
-					eList[i].style.opacity = op;
-				}
-  		}
-    }
+			var j = i % starts.length;
+			var k = i % targs.length;
+			eList[i]
+			var xPos = starts[j][0] + ((targs[k][0]-starts[j][0])*e);
+			var yPos = starts[j][1] + ((targs[k][1]-starts[j][1])*e);
+			eList[i].style.left = xPos + "px";
+			eList[i].style.top = yPos + "px";
+			eList[i].style.opacity = op;
+		}
+		if (runtime < duration){
+			requestAnimationFrame(function(timestamp){ 
+				moveit(timestamp, eList, starts, targs, num, rev, duration)
+			});
+		}
+	}
+	 
+	requestAnimationFrame(function(timestamp){
+		starttime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
+		moveit(timestamp, eList, starts, targs, num, rev, animTime) // 400px over 1 second
+	})
 }
 
 function fadeAnimator (fr, objects, rev, speed = 1)
   {
-	var pos = 0;
-	var num = objects.length;
-	
 	for (object of objects){
 		object.style.display = "block";
 		object.style.visibility = "visible"; 
 	}
 	
-	var id = setInterval(func, 5);
-  	function func ()
-	  {
-  		if (pos >= fr)
-		  {
-			if (rev){
-	  			for (object of objects)
-	  			  {
-	  				object.style.display = "none";
-	  				object.style.visibility = "hidden";  
-	  			  }
+	function moveit(timestamp, objects, rev, duration){
+		var runtime = timestamp - starttime;
+		var e  = ease(Math.min(runtime / duration, 1.0));
+		var op = rev ? 1 - e : e;
+		for (object of objects) object.style.opacity = op;
+		if (runtime < duration){
+			requestAnimationFrame(function(timestamp){ 
+				moveit(timestamp, objects, rev, duration)
+			});
+		}
+		else{
+		  if (rev)
+			{
+			for (object of objects)
+			  {
+			  object.style.display = "none";
+			  object.style.visibility = "hidden";  
 			  }
-	  		clearInterval(id);
-  		  }
-  		else
-		  {
-  			pos += speed;
-  			var e = ease(pos/fr);
-			var op = rev ? 1 - e : e;
-  				for (var i = 0; i < num; i++)
-  				  {
-					objects[i].style.opacity = op;
-				  }
-  		  }
-      }
+			}
+		}
+	}
+	 
+	requestAnimationFrame(function(timestamp){
+		starttime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
+		moveit(timestamp, objects, rev, animTime) // 400px over 1 second
+	})
+
+
+
   }
 
 
@@ -151,7 +157,6 @@ function desktopSpring (dir, num, cen)
 }
 
 function mobileSpring (dir, num, cen, off){
-	console.log(times);
 	if (times % 2 == 0)
 	  {
 		var pic = document.getElementsByClassName('pic')[0];
@@ -321,114 +326,132 @@ function mainMove(dir) {
 
 function colShift(pos, max, label, navlinks, mv)
 {
-	var id = setInterval(func, 5);
-	
-	function func (){
-		if (pos >= max){
-			clearInterval(id);
+	var drop = document.getElementsByClassName('drophide')[0];
+
+	function moveit(timestamp, navlinks, label, drop, rev, duration){
+		var runtime = timestamp - starttime;
+		var e  = ease(Math.min(runtime / duration, 1.0));
+		var colDelta = 210;
+		var invG = Math.round(230 - (colDelta*e));
+		var revG = Math.round(230 - colDelta + (colDelta*e));
+		var invCol = "#" + RGBToHex(invG, invG, invG);
+		var revCol = "#" + RGBToHex(revG, revG, revG);
+		
+		if (!rev){
+			label.style.color = revCol;
+			for (nvlk of navlinks){
+				nvlk.style.color = revCol;
+			}
+			drop.style.color = revCol;
+			document.body.style.backgroundColor = invCol;
 		}
 		else{
-			pos += 0.75;
-			var colDelta = 210;
-			var e = ease(pos/max);
-			var invG = Math.round(230 - (colDelta*e));
-			var revG = Math.round(230 - colDelta + (colDelta*e));
-			var invCol = "#" + RGBToHex(invG, invG, invG);
-			var revCol = "#" + RGBToHex(revG, revG, revG);
-			
-			if (!mv){
-				label.style.color = revCol;
-				for (nvlk of navlinks){
-				    nvlk.style.color = revCol;
-				}
-				document.getElementsByClassName('drophide')[0].style.color = revCol;
-				document.body.style.backgroundColor = invCol;
-			}
-			else{
-				label.style.color = invCol;
-				for (nvlk of navlinks){
-				    nvlk.style.color = invCol;
-				}	
-				document.getElementsByClassName('drophide')[0].style.color = invCol;		
-				document.body.style.backgroundColor = revCol;	
-			}
+			label.style.color = invCol;
+			for (nvlk of navlinks){
+				nvlk.style.color = invCol;
+			}	
+			drop.style.color = invCol;		
+			document.body.style.backgroundColor = revCol;	
+		}
+		if (runtime < duration){
+			requestAnimationFrame(function(timestamp){ 
+				moveit(timestamp, navlinks, label, drop, rev, duration)
+			});
 		}
 	}
+	 
+	requestAnimationFrame(function(timestamp){
+		starttime = timestamp || new Date().getTime();
+		moveit(timestamp, navlinks, label, drop, mv, animTime*1.2)
+	})
+
+
 }
 
 
 function desktopMove(pos, max, nums, elems, starts, targ, orgs, elm)
 {
-	var id = setInterval(func, 5);
-	
-	function func (){
-		if (pos >= max){
-			clearInterval(id);
+	function moveit(timestamp, elems, starts, targ, orgs, elm, duration){
+		var runtime = timestamp - starttime;
+		var e  = ease(Math.min(runtime / duration, 1.0));
+		if (!moved){
+			for (var i = 0; i < nums; i++)
+			{
+				var elem = elems[i];
+				var yPos = starts[i] + ((targ-starts[i])*e)
+				elem.style.left = yPos + "px";
+				elem.style.opacity = 1 - e;
+			}
+			
+		}
+		else{
+			for (var i = 0; i < nums; i++)
+			{
+				var elem = elems[i];
+				var yPos = starts[i] + ((orgs[i]-starts[i])*e)
+				elem.style.left = yPos + "px";
+				elem.style.opacity = e;
+			}
+			
+		}
+		elm.style.opacity = 1.0;
+		if (runtime < duration){
+			requestAnimationFrame(function(timestamp){ 
+				moveit(timestamp, elems, starts, targ, orgs, elm, duration)
+			});
+		}
+		else{
 			moved = !moved;
 			click = true;
 		}
-		else{
-			pos += 0.75;
-			var e = ease(pos/max);
-			if (!moved){
-				for (var i = 0; i < nums; i++)
-				{
-					var elem = elems[i];
-					var yPos = starts[i] + ((targ-starts[i])*e)
-					elem.style.left = yPos + "px";
-					elem.style.opacity = 1 - e;
-				}
-				
-			}
-			else{
-				for (var i = 0; i < nums; i++)
-				{
-					var elem = elems[i];
-					var yPos = starts[i] + ((orgs[i]-starts[i])*e)
-					elem.style.left = yPos + "px";
-					elem.style.opacity = e;
-				}
-				
-			}
-			elm.style.opacity = 1.0;
-		}
 	}
+	 
+	requestAnimationFrame(function(timestamp){
+		starttime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
+		moveit(timestamp, elems, starts, targ, orgs, elm, animTime) // 400px over 1 second
+	})
 }
 
 function mobileMove(pos, max, nums, elems, starts, targ, orgs, elm)
 {
-	var id = setInterval(func, 5);
-	
-	function func (){
-		if (pos >= max){
-			clearInterval(id);
+	function moveit(timestamp, elems, starts, targ, orgs, elm, duration){
+		var runtime = timestamp - starttime;
+		var e  = ease(Math.min(runtime / duration, 1.0));
+		if (!moved){
+			for (var i = 0; i < nums; i++)
+			{
+				var yPos = starts[i] + ((targ-starts[i])*e)
+				elems[i].style.top = yPos + "px";
+				elems[i].style.opacity = 1 - e;
+			}
+			
+		}
+		else{
+			for (var i = 0; i < nums; i++)
+			{
+				var yPos = starts[i] + ((orgs[i]-starts[i])*e)
+				elems[i].style.top = yPos + "px";
+				elems[i].style.opacity = e;
+			}
+			
+		}
+		elm.style.opacity = 1.0;
+		if (runtime < duration){
+			requestAnimationFrame(function(timestamp){ 
+				moveit(timestamp, elems, starts, targ, orgs, elm, duration)
+			});
+		}
+		else{
 			moved = !moved;
 			click = true;
 		}
-		else{
-			pos += 0.75;
-			var e = ease(pos/max);
-			if (!moved){
-				for (var i = 0; i < nums; i++)
-				{
-					var yPos = starts[i] + ((targ-starts[i])*e)
-					elems[i].style.top = yPos + "px";
-					elems[i].style.opacity = 1 - e;
-				}
-			
-			}
-			else{
-				for (var i = 0; i < nums; i++)
-				{
-					var yPos = starts[i] + ((orgs[i]-starts[i])*e)
-					elems[i].style.top = yPos + "px";
-					elems[i].style.opacity = e;
-				}
-			
-			}
-			elm.style.opacity = 1.0;
-		}
-  	}
+	}
+	 
+	requestAnimationFrame(function(timestamp){
+		starttime = timestamp || new Date().getTime();
+		moveit(timestamp, elems, starts, targ, orgs, elm, animTime)
+	})
+
 }
 
 var dropped = false;
@@ -484,7 +507,6 @@ function menuDrop(){
 		for (link of newLinks) link.style.zIndex = -1;
 		button.innerHTML = " + ";
 	}
-	console.log(newLinks);
 	dropped = !dropped;
 	dropdowns++;
 }

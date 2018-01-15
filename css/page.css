@@ -199,6 +199,10 @@ a:hover{
 	float:right;
 }
 
+.container{
+	max-width: 75vw;
+}
+
 .btn{
 	color:#eee;
 	border-radius:10px!important;

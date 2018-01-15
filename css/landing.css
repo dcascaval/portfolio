@@ -3,18 +3,33 @@ body{
 	background-color:#e6e6e6;
 	font-family: Courier, monospace;
 	font-size: 12px;
+	-webkit-transform: translatez(0);
+	-moz-transform: translatez(0);
+	-ms-transform: translatez(0);
+	-o-transform: translatez(0);
+	transform: translatez(0);
 }
 
 .animate {
   position: absolute;
-  top:250px;
+	top:250px;
+	-webkit-transform: translatez(0);
+	-moz-transform: translatez(0);
+	-ms-transform: translatez(0);
+	-o-transform: translatez(0);
+	transform: translatez(0);
 }
 
 .pic{
   width: 250px;
   height: 250px;
   border-radius: 125px;
-  box-shadow:0 0 0 3px #aaa;
+	box-shadow:0 0 0 3px #aaa;
+	-webkit-transform: translatez(0);
+	-moz-transform: translatez(0);
+	-ms-transform: translatez(0);
+	-o-transform: translatez(0);
+	transform: translatez(0);
 }
 
 #apic{
