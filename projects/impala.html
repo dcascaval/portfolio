@@ -67,56 +67,74 @@
 				<div class="headlabel">Impala</div>
 			</div>
 		</div>
-		
+		<div class="row">
+			
+		</div>
+
+		<!-- TODO: Header image and OS link -->
+		<div class="row">
+			<img class="img-fluid" src ="../impala/icon_banner.png" style="margin: auto;">
+		</div>
 		<!-- Overview Text -->
 		<div class="row">
-            <p> Introducing Impala - a <strong>multithreaded C# component</strong> library for Grasshopper. Impala replicates common bottleneck operations with a focus on efficiency, allowing complex scripts and simulations to make use of all available computational capacity. This is primarily beneficial for scripts that deal with thousands of objects or rely on <strong>physical operations</strong> or information.</p>
-            
-            <p>Impala focuses primarily on replicating existing Grasshopper functionality and developing an environment suitable to <strong>seamless integration of multithreaded computation</strong> within Grasshopper. To this end it currently contains two types of components:</p>
+				<p>
+					Imapala is a library of high-performance, parallel computational geometry components written in C#. Grasshopper provides a software environment for rapid scripting and design computation. This environment offers an extremely flexible, visual approach to programming. Impala replicates common bottleneck Grasshopper operations with a focus on efficiency, allowing complex scripts and static simulations embedded within Grasshopper to make use of all available computational capacity. This is primarily evident in scripts that deal with thousands of objects or rely heavily on physically-based information and computation.
+				</p>	
+				<p>
+					The primary target audience is experienced design computation practitioners and Grasshopper users who are running into the upper bounds of the tool's native, single-core performance, and are willing to take a finer approach to boosting performance at key points. Impala focuses primarily on replicating existing Grasshopper functionality and developing an environment suitable to seamless integration of performant or multithreaded computation within GH. To this end it currently contains three types of components:					
+				</p>
+				<ul>
+					<li>Components that perform identical (or nearly identical) operations to existing Grasshopper components, but do so using a parallel strategy or a better algorithmic complexity (ex: <code>Closest Point</code>, <code>Halton</code>)</li>
+					<li>Components that condense expensive Grasshopper patterns and use imperative methods to significantly reduce the time and space needed to obtain a result (ex: <code>Closest Curve Closest Point</code>, <code>MeshFlow</code>)</li>
+					<li>Components that limit Grasshopper's type-casting system in exchange for performance gains on larger inputs (ex: the QuickMath components)</li>
+				</ul>
 
-            <ul>
-                <li>Components that perform identical (or nearly identical) operations to existing Grasshopper components, but do so using a parallel strategy or a better algorithmic complexity (ex: <code>Closest Point</code>, <code>Halton</code>)</li>
-                <li>Components that replicate expensive Grasshopper operation sets and use imperative methods to signifcantly reduce the time and memory needed to obtain a result (ex: <code>Closest Curve Closest Point</code>, <code>MeshFlow</code>)</li>
-            </ul>
-            
-            <p>Impala intends to provide as seamless an experience as possible, and does so by using nullable types and internally maintaining the structure of input data in the same way that Grasshopper does. It additionally aims to <strong>improve performance by exposing “threshold” parameters</strong> wherever possible - allowing the user to specify under which conditions they do not want the result of an operation, signifcantly speeding up the computation in these cases.</p>
+				<p>Impala 1.0 has been released! Grab it on <a href="https://www.food4rhino.com/app/impala">Food4Rhino</a>!</p>
+				<p>Impala is open source! Check it out <a href="https://github.com/dcascaval/Impala">on Github.</a></p>
 
-            <p>However, despite these advances, Impala’s parallelism is not (yet!) fully implicit. The by-item looping behaviour of most GH components is not suited to parallel operations, since the solve-instance method does not have access to all the necessary data simultaneously. </p>
+				<p>Standalone benchmark files are also used to test for correctness - a typical benchmark will verify correctness and measure performance against the equivalent native implementation to the Impala functionality. For example, a section of the QuickMath benchmark might look like this:</p>
 
-            <p>Several components aim to take advantage of Grasshopper’s implicit data looping, and thus contain specifcations to input certain data “as list” and “as item” in order to advantage certain types of parallelism. These are made explicit in the component inputs to mitigate unexpected behaviour.</p>
-		</div>
-
-		<div class="row">
-			<div class="offset-xs-1 col-xs-10">
-				<p class="caption">[-] List Object Model - Implicit Loops</p>
-				<img class="img-fluid" src="../images/impala_list.jpg" alt="material model">
-			</div>
-		</div>
-
-		<div class = "row">
-            <p>For example, it is common that <code>CurveCP</code> will operate on a list of points relative to a single curve, for example when extracting parameters for a sorting operation. Therefore the Impala analogue (<code>parCurveCP</code>) currently operates on a list-to-item basis to execute each <code>CurveCP</code> operation independently, without accessing the entire tree structure. This model is lean - it uses no additional information and maintains a simplicity in its internal stucture. However, it sufers from performance reduction when applied to a tree of inputs where each point interacts with a separate curve. Additionally, it is limited to “one-to-one” operations - where one input results in one (and only one) output.</p>
-		</div>
-
-		<div class="row">
-			<div class="offset-xs-1 col-xs-10">
-				<p class="caption">[-] Tree Object Model - Explicit</p>
-				<img class="img-fluid" src="../images/impala_tree.jpg" alt="exterior rendering">
+				<table>
+					<thead>
+						<tr>
+							<th style="text-align:center;"><p>Flat Input</p></th>
+							<th style="text-align:center;"><p>Random input</p></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td align="center"><img src="../impala/Flat_BinAdd_Bench.png" alt="Flat Input" style="max-width:70%;"></td>
+							<td align="center"><img src="../impala/Random_BinAdd_Bench.png" alt="Random Input" style="max-width:70%;"></td>
+						</tr>
+					</tbody>
+				</table>
 				
-			</div>
+				<br>
+				
+				<p>Preliminary benchmarks indicate that Impala components are as fast as native GH for all input sizes, and significantly faster for any larger input size. Additionally, Impala components are as fast or faster than the multithreaded GH components in GH1. Unlike those components, however, Impala components are optimised against adversarial input patterns, and can significantly outperform the multithreaded GH1 components in many cases:</p>
+				
+				<table>
+					<thead>
+						<tr>
+							<th style="text-align:center;"><p>Against Curve-Curve SingleThreaded</p></th>
+							<th style="text-align:center;"><p>Against Curve-Curve Multithreaded</p></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td align="center"><img class="img-fluid" src="../impala/r6_ccx_Bench.jpg" alt="ST Input" style="max-width:70%;"></td>
+							<td align="center"><img class="img-fluid" src="../impala/r6_mtx_flat_Bench.jpg" alt="Flat Input" style="max-width:70%;"></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<br>
+			
 		</div>
 
 		<div class="row">
-			<p> Other components, however, illustrate a different model to structure the operation. Instead of specifying list vs. item operations, the Divide Length component, <code>parDivLen</code>, intakes the entire input tree simultaneously. It then packages the necessary structural information for each instance of the computation into a custom class instance. A single array of these is then operated on in parallel, optimising the bulk of the computational expense. The data is then extracted from the class and (thread-safely) inserted into the main data structure, which is agnostic to the order in which operations occur or the structure of the incoming or outgoing data. While (just) slightly slower, the Tree-Object model offers a “general case” solution to the problem. In the case of <code>parDivLen</code>, it allows data trees of any shape to be restructured and mapped to a new shape while still maximizing opportunity for parallel operations.</p>
-		</div>
-
-		<div class="row">
-			<p>In the future, Impala will implement all operations to utilise the Tree-Object model, and potentially expose particular optional parameters which will allow the user to tune how the packaging works in order to optimise their particular use-case. It is the primary goal of Impala to extend Grasshopper’s capabilities (by allowing a wider range of expensive operations) while maintaining the prototyping flexibility that GH’s associative model and robust ecosystem lends to designers in the early stages.</p>
-
-			<p>While Impala has been tested and performs as expected on standard inputs, parallelism makes it more difficult to react when things go wrong, and the component may not always react safely to invalid inputs. The more egregious cases (wrong data types) are guarded against, but null-inputs may cause hidden problems to arise in unexpected out-puts, whereas Grasshopper would simply be able to output a null object. A set of test files provide examples (and guarantees of correctness) for all Impala components, as well as a short set of analysis notes for each of them specifying particularly helpful use-cases. These, along with the source code, are available <a href="www.github.com/dcascaval/impala">on Github.</a></p>
-
 			<p>Additional goals for future development include:</p>
 			<ul>
-				<li>Composition of other expensive operations (occlusion, intersection, etc.)</li>
 				<li>Automated integration of Impala components in the form of a macro that searches for locations in a script where Impala could improve GH functionality and substituting the analogous component.</li>
 				<li>Allowing inter-component parallelism within a group. By maintaining constant inputs and outputs in a group of components, their operation set can be run in parallel, making use of Grasshopper’s already visually-explicit data-dependency graph to structure the computation.</li>
 			</ul>
@@ -126,7 +144,13 @@
 		<div class="row">
 			<div class="offset-xs-1 col-xs-10">[
 				<p class="caption">[-] Mesh Flow Simulation </p>
-				<img class="img-fluid" src="../images/impala_meshflow.jpg" alt="">		
+				<img class="img-fluid" src="../images/impala_meshflow.png" alt="">		
+			</div>
+		</div>
+		<div class="row">
+			<div class="offset-xs-1 col-xs-10">[
+				<p class="caption">[-] Nearest-Neighbor Deform </p>
+				<img class="img-fluid" src="../impala/example_screenshot.png" alt="">		
 			</div>
 		</div>
 
