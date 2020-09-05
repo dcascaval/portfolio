@@ -2,6 +2,14 @@ html {
   height: 100%;
 }
 
+*::selection {
+  background: #54ca7244;
+}
+
+*::-moz-selection {
+  background: #54ca7244;
+}
+
 body {
   min-height: 100%;
   font-family: "PT Sans", sans-serif;
@@ -35,6 +43,11 @@ body {
   color: #f6f7ef;
   font-size: 40px;
   font-weight: 700;
+}
+.sidebar .email {
+  color: #f6f7ef;
+  font-weight: 700;
+  letter-spacing: 0.7px;
 }
 
 .content-wrapper {
@@ -77,12 +90,51 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.main-content > div {
+.main-content a {
+  color: #35ab53;
+  text-decoration: none;
+  border-bottom: 2px solid #ffffff00;
+  transition: all linear 0.1s;
+}
+.main-content a:hover {
+  border-bottom: 1px solid #35ab53;
+}
+.main-content .content {
   width: 80%;
+  font-family: "Roboto Slab", sans-serif;
+  color: #474444;
   margin-top: 20px;
   font-size: 20px;
 }
-.main-content > div em {
+.main-content .content:first-of-type {
+  margin-top: 60px;
+}
+.main-content .content em {
   font-style: inherit;
   font-weight: 700;
+}
+
+.project-wrapper {
+  width: 80%;
+  margin-top: 40px;
+  color: #474444;
+}
+.project-wrapper .project-title {
+  font-size: 30px;
+  margin-left: 40px;
+  padding: 0px 10px;
+  color: #000;
+  background-color: #f6f7ef;
+  position: relative;
+  display: inline;
+  z-index: 2;
+}
+.project-wrapper .project-content {
+  font-size: 20px;
+  border: 2px solid #474444;
+  font-size-adjust: 20px;
+  padding: 30px 20px;
+  border-radius: 8px;
+  margin-top: -20px;
+  z-index: 1;
 }
