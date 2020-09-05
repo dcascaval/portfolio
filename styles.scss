@@ -1,0 +1,101 @@
+$foreground: #f6f7ef;
+$background: #474444;
+$green: #54ca72;
+$blue: #00bfa4;
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  font-family: "PT Sans", sans-serif;
+}
+
+.root {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 33%;
+  height: 100%;
+  background-color: #474444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .headshot {
+    margin-top: 100px;
+    background-color: $foreground;
+    width: 216px;
+    height: 216px;
+    border: 8px solid $green;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+
+  .bio {
+    margin-top: 30px;
+    color: $foreground;
+    font-size: 40px;
+    font-weight: 700;
+  }
+}
+
+.content-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $background;
+}
+
+.navbar {
+  font-size: 20px;
+  height: 100px;
+  width: 100%;
+  background-color: $background;
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  ul {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  li {
+    color: $foreground;
+    padding: 8px 16px;
+    border-radius: 8px;
+
+    &.active {
+      border: 2px solid $green;
+    }
+  }
+}
+
+.main-content {
+  height: 100%;
+  background-color: $foreground;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  >div {
+    width: 80%;
+    margin-top: 20px;
+    font-size: 20px;
+
+    em {
+      font-style: inherit;
+      font-weight: 700;
+    }
+  }
+}
