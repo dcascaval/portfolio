@@ -13,21 +13,40 @@
   <link rel="stylesheet" href="minireset.css" />
   <link rel="stylesheet" href="dist/styles.css" />
   <title>Dan Cascaval</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.classList.remove("preload")
+    });
+  </script>
 </head>
 
-<body>
+<body class="preload">
   <div class="root">
     <div class="sidebar">
       <div class="headshot">
         <img src="dan.jpg"></img>
       </div>
       <p class="bio">Dan Cascaval</p>
-      <p class="email">(λ name . name@cs.washington.edu) cascaval</p>
+      <p class="email">
+        cascaval@cs.washington.edu
+      </p>
+      <p class="links">
+        <a target="_blank" href="">
+          CV
+        </a>
+        <a target="_blank" href="">
+          Github
+        </a>
+        <a target="_blank" href="">
+          Instagram
+        </a>
+      </p>
     </div>
     <div class="content-wrapper">
       <nav class="navbar">
         <ul>
           <li class="active">Projects</li>
+          <li>Resume</li>
           <li>Musings</li>
           <li>Books</li>
         </ul>
@@ -50,6 +69,30 @@
           <div class="project-title">Impala</div>
           <div class="project-content">
             Parallel, high performance component library for Rhino3D and Grasshopper3D.
+          </div>
+        </div>
+        <div class="project-wrapper">
+          <div class="project-title">DAG</div>
+          <div class="project-content">
+            Data-parallel language compiled for GPU.
+          </div>
+        </div>
+        <div class="project-wrapper">
+          <div class="project-title">Modeling Tools</div>
+          <div class="project-content">
+            Panel Designer & Façade Painter
+          </div>
+        </div>
+        <div class="project-wrapper">
+          <div class="project-title">Timber Fabrication</div>
+          <div class="project-content">
+            Toolpathing and planning for 6-axis robotic steam-bending.
+          </div>
+        </div>
+        <div class="project-wrapper">
+          <div class="project-title">Sentient Concrete</div>
+          <div class="project-content">
+            Environmentally-responsive surface geometry
           </div>
         </div>
       </div>

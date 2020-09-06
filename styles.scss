@@ -5,9 +5,20 @@ $blue: #00bfa4;
 $green-dark: hsl(135.25, 52.68, 44);
 $green-alpha: #54ca7244;
 
-html {
-  height: 100%;
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
 }
+
+html {
+  min-height: 100%;
+  background-color: $background;
+}
+
 
 *::selection {
   background: #54ca7244;
@@ -26,12 +37,13 @@ body {
 .root {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .sidebar {
   width: 33%;
-  height: 100%;
+  min-width: 300px;
+  min-height: 100%;
   background-color: #474444;
   display: flex;
   flex-direction: column;
@@ -59,6 +71,14 @@ body {
     font-weight: 700;
     letter-spacing: 0.7px;
   }
+
+  .links {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-evenly;
+  }
 }
 
 .content-wrapper {
@@ -76,49 +96,65 @@ body {
   background-color: $background;
   display: flex;
   align-items: center;
-}
 
-.navbar {
   ul {
-    width: 30%;
+    width: 40%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
   }
 
   li {
+    display: flex;
+    border-color: $background;
     color: $foreground;
+
     padding: 8px 16px;
     border-radius: 8px;
+    border: 2px solid $background;
+    transition: border-color linear 0.2s;
+    cursor: pointer;
 
     &.active {
+      cursor: auto;
       border: 2px solid $green;
     }
+
+    &:hover:not(.active) {
+      border: 2px solid $foreground;
+    }
+
+  }
+}
+
+
+a {
+  color: $green-dark;
+  text-decoration: none;
+  border-bottom: 2px solid #ffffff00;
+  transition: border linear 0.1s;
+
+  &:hover {
+    border-bottom: 1px solid $green-dark;
   }
 }
 
 .main-content {
-  height: 100%;
+  min-height: 100%;
+  width: 90%;
+  min-width: 800px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
   background-color: $foreground;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  a {
-    color: $green-dark;
-    text-decoration: none;
-    border-bottom: 2px solid #ffffff00;
-    transition: all linear 0.1s;
-
-    &:hover {
-      border-bottom: 1px solid $green-dark;
-    }
-  }
-
   .content {
     width: 80%;
     font-family: 'Roboto Slab', sans-serif;
+    line-height: 140%;
     color: $background;
     margin-top: 20px;
     font-size: 20px;
@@ -159,5 +195,16 @@ body {
     border-radius: 8px;
     margin-top: -20px;
     z-index: 1;
+
+    transition: border-color linear 0.3s;
+
+
+
+  }
+
+  &:hover {
+    .project-content {
+      border: 2px solid $green;
+    }
   }
 }
