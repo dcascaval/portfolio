@@ -18,6 +18,12 @@
       document.body.classList.remove("preload")
     });
 
+    function expand(event) {
+      console.log(event.currentTarget);
+      let content = event.currentTarget.children[1].children[0];
+      content.classList.toggle("expand");
+    }
+
     function switchTo(section) {
       let navLinks = document.querySelectorAll(".navbar li");
       // Switch the activity in the navbar.
@@ -94,31 +100,51 @@
             and
             the built environment.
           </div>
-          <div class="project-wrapper">
+          <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Impala</div>
             <div class="project-content">
               Parallel, high performance component library for Rhino3D and Grasshopper3D.
+              <div class="project-details">
+                <hr>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Vitae tortor condimentum lacinia quis vel eros donec ac. Ac tortor vitae purus
+                faucibus ornare suspendisse sed nisi lacus. Sapien eget mi proin sed libero. Egestas sed sed risus
+                pretium
+                quam.
+                <br> <br>
+                Nisi vitae suscipit tellus mauris a diam maecenas sed. Duis tristique sollicitudin nibh sit amet commodo
+                nulla. Cras ornare arcu dui vivamus arcu felis bibendum. Morbi tempus iaculis urna id. Facilisis leo vel
+                fringilla est ullamcorper eget. Turpis in eu mi bibendum neque egestas congue quisque.
+                <br><br>
+                Sed vulputate mi sit amet. Sollicitudin aliquam ultrices sagittis orci a. Posuere ac ut consequat semper
+                viverra nam. A iaculis at erat pellentesque. Posuere urna nec tincidunt praesent semper feugiat nibh.
+                Lorem mollis aliquam ut porttitor leo a diam sollicitudin.
+                <br><br>
+                Sed vulputate mi sit amet. Sollicitudin aliquam ultrices sagittis orci a. Posuere ac ut consequat semper
+                viverra nam. A iaculis at erat pellentesque. Posuere urna nec tincidunt praesent semper feugiat nibh.
+                Lorem mollis aliquam ut porttitor leo a diam sollicitudin.
+              </div>
             </div>
           </div>
-          <div class="project-wrapper">
+          <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">DAG</div>
             <div class="project-content">
               Data-parallel language compiled for GPU.
             </div>
           </div>
-          <div class="project-wrapper">
+          <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Modeling Tools</div>
             <div class="project-content">
               Panel Designer & Façade Painter
             </div>
           </div>
-          <div class="project-wrapper">
+          <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Timber Fabrication</div>
             <div class="project-content">
               Toolpathing and planning for 6-axis robotic steam-bending.
             </div>
           </div>
-          <div class="project-wrapper">
+          <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Sentient Concrete</div>
             <div class="project-content">
               Environmentally-responsive surface geometry
@@ -130,18 +156,26 @@
             Before starting my PhD, I spent five years at Carnegie Mellon University, studying Architecture and Computer
             Science.
           </div>
-          <div class="project-wrapper">
+          <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Join</div>
             <div class="project-content">
               Startup providing intelligent collaboration tools for the construction industry.
             </div>
           </div>
-          <div class="project-wrapper">
+          <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">NBBJ</div>
             <div class="project-content">
               World-class architecture firm, innovating in sustainability and design technology.
             </div>
           </div>
+          <div class="project-wrapper">
+            <div class="project-title">Carnegie Mellon</div>
+            <div class="project-content">
+              Worked as a research assistant and teaching assistant for courses ranging from digital media to compiler
+              design.
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

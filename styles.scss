@@ -215,9 +215,35 @@ a {
     transition: border-color linear 0.3s;
   }
 
+  .project-details {
+    margin-top: 20px;
+    font-size: 16px;
+    z-index: 1;
+    transition: all ease-out 0.1s;
+    height: 100%;
+    overflow: hidden;
+
+    hr {
+      margin-bottom: 20px;
+      transition: all linear 0.3s;
+      border-top: 1px solid #47444488;
+    }
+  }
+
+  .project-details:not(.expand) {
+    height: 0px;
+    margin-top: 0;
+  }
+
   &:hover {
     .project-content {
       border: 2px solid $green;
+
+      .project-details {
+        hr {
+          border-top: 1px solid $green;
+        }
+      }
     }
   }
 }

@@ -184,6 +184,26 @@ a:hover {
   z-index: 1;
   transition: border-color linear 0.3s;
 }
+.show .project-wrapper .project-details {
+  margin-top: 20px;
+  font-size: 16px;
+  z-index: 1;
+  transition: all ease-out 0.1s;
+  height: 100%;
+  overflow: hidden;
+}
+.show .project-wrapper .project-details hr {
+  margin-bottom: 20px;
+  transition: all linear 0.3s;
+  border-top: 1px solid #47444488;
+}
+.show .project-wrapper .project-details:not(.expand) {
+  height: 0px;
+  margin-top: 0;
+}
 .show .project-wrapper:hover .project-content {
   border: 2px solid #54ca72;
+}
+.show .project-wrapper:hover .project-content .project-details hr {
+  border-top: 1px solid #54ca72;
 }
