@@ -7,9 +7,7 @@
   <meta name="description" content="Architecture and Computational Design" />
   <meta name="keywords" content="Architecture, Design, Computation, Environment, Research" />
   <meta name="author" content="Dan Cascaval" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="minireset.css" />
   <link rel="stylesheet" href="dist/styles.css" />
   <title>Dan Cascaval</title>
@@ -30,12 +28,31 @@
       return false;
     }
 
+    function swallow(event) {
+      event.stopPropagation();
+    }
+
+    function getAncestor(element, className) {
+      if (element.className.includes(className)) {
+        return element;
+      } else {
+        if (element.parentElement) {
+          return getAncestor(element.parentElement, className);
+        }
+        return undefined;
+      }
+    }
+
     function expand(event) {
-      expandClass(event.target, "project-details", "expand");
+      let target = getAncestor(event.target, "project-wrapper");
+      if (!target) return;
+      expandClass(target, "project-details", "expand");
+      expandClass(target, "arrow", "expand");
     }
 
     function switchTo(section) {
       let navLinks = document.querySelectorAll(".navbar li");
+
       // Switch the activity in the navbar.
       for (let i = 0; i < navLinks.length; i++) {
         if (navLinks[i].className.includes("active")) {
@@ -47,16 +64,28 @@
       }
 
       let sections = document.querySelector(".main-content").children;
-      // Switch the displayed page section.
 
+      // Switch the displayed page section.
+      let currentSection;
+      let nextSection;
       for (let i = 0; i < sections.length; i++) {
-        if (sections[i].className.includes("show")) {
-          sections[i].classList.remove("show");
-        }
-        if (sections[i].id.includes(section)) {
-          sections[i].classList.add("show");
-        }
+        if (sections[i].id.includes(section))
+          nextSection = sections[i];
+        else if (sections[i].className.includes("show"))
+          currentSection = sections[i];
       }
+      if (!currentSection || !nextSection) return;
+
+
+      let DELAY = 200;
+      currentSection.classList.add("fade");
+      setTimeout(() => {
+        currentSection.classList.remove("show");
+        nextSection.classList.add("show");
+        setTimeout(() => {
+          nextSection.classList.remove("fade");
+        }, DELAY);
+      }, DELAY);
     }
   </script>
 </head>
@@ -95,60 +124,44 @@
       <div class="main-content">
         <div id="projects" class="show">
           <div class="content">
-            I'm a PhD student in Computer Science at the <a target="_blank"
-              href="https://www.cs.washington.edu/">University of Washington</a> advised by <a target="_blank"
-              href="https://homes.cs.washington.edu/~bodik/">Ras Bodik</a> and <a target="_blank"
-              href="https://homes.cs.washington.edu/~adriana/">Adriana Schulz</a>.
+            I'm a PhD student in Computer Science at the <a target="_blank" href="https://www.cs.washington.edu/">University of Washington</a> advised by <a target="_blank" href="https://homes.cs.washington.edu/~bodik/">Ras Bodik</a> and <a target="_blank" href="https://homes.cs.washington.edu/~adriana/">Adriana Schulz</a>.
           </div>
           <div class="content">
-            I am working on problems in computational geometry and shape manipulation using program synthesis and
-            related
-            tools. Right now, that includes representing 3D CAD models as programs and developing synthesis-based tools
-            for <em>bidirectional editing</em>, <em>constraint inference</em>, and <em>feature transfer</em>. I am
-            always
-            looking for new applications for this work, particularly in the domain of improving architecture, design,
-            and
-            the built environment.
+            I am working on problems in computational geometry and shape manipulation using program synthesis and related tools. Right now, that includes representing 3D CAD models as programs and developing synthesis-based tools for <em>bidirectional editing</em>, <em>constraint inference</em>, and <em>feature transfer</em>. I am always looking for new applications for this work, particularly in the domain of improving architecture, design, and the built environment.
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Impala</div>
             <div class="project-content">
-              Parallel, high performance component library for Rhino3D and Grasshopper3D.
-              <div class="project-details">
+              <div class="subtitle">
+                <p>
+                  Parallel, high performance component library for Rhino3D and Grasshopper3D.
+                </p>
+                <div class="arrow"></div>
+              </div>
+              <div class="project-details" onclick="swallow(event)">
                 <hr>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Vitae tortor condimentum lacinia quis vel eros donec ac. Ac tortor vitae purus
-                faucibus ornare suspendisse sed nisi lacus. Sapien eget mi proin sed libero. Egestas sed sed risus
-                pretium
-                quam.
-                <br> <br>
-                Nisi vitae suscipit tellus mauris a diam maecenas sed. Duis tristique sollicitudin nibh sit amet commodo
-                nulla. Cras ornare arcu dui vivamus arcu felis bibendum. Morbi tempus iaculis urna id. Facilisis leo vel
-                fringilla est ullamcorper eget. Turpis in eu mi bibendum neque egestas congue quisque.
-                <br><br>
-                Sed vulputate mi sit amet. Sollicitudin aliquam ultrices sagittis orci a. Posuere ac ut consequat semper
-                viverra nam. A iaculis at erat pellentesque. Posuere urna nec tincidunt praesent semper feugiat nibh.
-                Lorem mollis aliquam ut porttitor leo a diam sollicitudin.
-                <br><br>
-                Sed vulputate mi sit amet. Sollicitudin aliquam ultrices sagittis orci a. Posuere ac ut consequat semper
-                viverra nam. A iaculis at erat pellentesque. Posuere urna nec tincidunt praesent semper feugiat nibh.
-                Lorem mollis aliquam ut porttitor leo a diam sollicitudin.
-                <br><br>
-                Sed vulputate mi sit amet. Sollicitudin aliquam ultrices sagittis orci a. Posuere ac ut consequat semper
-                viverra nam. A iaculis at erat pellentesque. Posuere urna nec tincidunt praesent semper feugiat nibh.
-                Lorem mollis aliquam ut porttitor leo a diam sollicitudin.
-                <br><br>
-                Sed vulputate mi sit amet. Sollicitudin aliquam ultrices sagittis orci a. Posuere ac ut consequat semper
-                viverra nam. A iaculis at erat pellentesque. Posuere urna nec tincidunt praesent semper feugiat nibh.
-                Lorem mollis aliquam ut porttitor leo a diam sollicitudin.
+                <img mxh="85" src="icon_banner_3.png"></img>
+                <a target="_blank" href="https://www.grasshopper3d.com/">Grasshopper3D</a> is a visual programming language for creating parametric models embedded in <a target="_blank" href="https://www.rhino3d.com/">Rhino3D</a>. It works as a directed graph of components, each performing an operation, that send trees of data along edges to trigger recomputation. <br><br> <a target="_blank" href="https://www.food4rhino.com/app/impala">Impala</a> dramatically improves the performance of Grasshopper on models that handle large amounts of data. At its core, it provides a reimplementation of standard components to run in parallel as a drop-in replacement to the Grasshopper standard library. Impala is excellent for processing <em>point clouds</em>, <em>landscape data</em>, and <em>physical simulations</em>.<br><br> Impala combines this strategy with a few key insights to maximize the available performance benefit:
+                <ul>
+                  <li><em>Minimize allocation overhead.</em> Impala re-implements the basic data tree structure. This allows space to be preallocated, trees to be filled in parallel, and a compact encoding of tree paths.</li>
+                  <li><em>Restrict type-casts.</em> Impala assumes a homogenous type of data in a tree, as is nearly always the case in practice. This allows type conversions to happen much more quickly for large data trees.</li>
+                  <li><em>Algorithmic optimization.</em> Impala replaces some quadratic implementations in the standard library with custom strategies that have improved parallel complexity.</li>
+                </ul>
               </div>
             </div>
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">DAG</div>
+
+
             <div class="project-content">
-              Data-parallel language compiled for GPU.
-              <div class="project-details">
+              <div class="subtitle">
+                <p>
+                  Data-parallel programming language compiled for GPU.
+                </p>
+                <div class="arrow"></div>
+              </div>
+              <div class="project-details" onclick="swallow(event)">
                 <hr>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Vitae tortor condimentum lacinia quis vel eros donec ac. Ac tortor vitae purus
@@ -161,26 +174,40 @@
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Modeling Tools</div>
             <div class="project-content">
-              Panel Designer & Façade Painter
+              <div class="subtitle">
+                <p>
+                  Panel Designer & Façade Painter
+                </p>
+                <div class="arrow"></div>
+              </div>
             </div>
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Timber Fabrication</div>
             <div class="project-content">
-              Toolpathing and planning for 6-axis robotic steam-bending.
+              <div class="subtitle">
+                <p>
+                  Toolpathing and planning for 6-axis robotic steam-bending.
+                </p>
+                <div class="arrow"></div>
+              </div>
             </div>
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Sentient Concrete</div>
             <div class="project-content">
-              Environmentally-responsive surface geometry
+              <div class="subtitle">
+                <p>
+                  Environmentally-responsive surface geometry
+                </p>
+                <div class="arrow"></div>
+              </div>
             </div>
           </div>
         </div>
-        <div id="resume">
+        <div id="resume" class="fade">
           <div class="content">
-            Before starting my PhD, I spent five years at Carnegie Mellon University, studying Architecture and Computer
-            Science.
+            Before starting my PhD, I spent five years at Carnegie Mellon University, studying Architecture and Computer Science.
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Join</div>
@@ -197,8 +224,7 @@
           <div class="project-wrapper">
             <div class="project-title">Carnegie Mellon</div>
             <div class="project-content">
-              Worked as a research assistant and teaching assistant for courses ranging from digital media to compiler
-              design.
+              Worked as a research assistant and teaching assistant for courses ranging from digital media to compiler design.
             </div>
           </div>
 

@@ -5,7 +5,8 @@ $blue: #00bfa4;
 $green-dark: hsl(135.25, 52.68, 44);
 $green-alpha: #54ca7244;
 
-$expand-time: 0.2s;
+$color-transition: 0.1s linear;
+$expand-time: 0.25s;
 $half-expand-time: $expand-time / 2;
 
 
@@ -148,13 +149,20 @@ a {
 
 .main-content>:not(.show) {
   display: none;
+}
 
-  .content {
+
+.main-content .fade {
+  * {
     opacity: 0;
+    transition: opacity 0.2s;
   }
+}
 
-  .project-wrapper {
-    opacity: 0;
+.main-content :not(.fade) {
+  * {
+    opacity: 1;
+    transition: opacity 0.2s;
   }
 }
 
@@ -172,7 +180,7 @@ a {
 
   .content {
     width: 80%;
-    font-family: 'Roboto Slab', sans-serif;
+    font-family: 'Roboto Slab', serif;
     line-height: 140%;
     color: $background;
     margin-top: 20px;
@@ -196,9 +204,10 @@ a {
 
   .project-title {
     font-size: 30px;
+    font-weight: 700;
     margin-left: 40px;
     padding: 0px 10px;
-    color: #000;
+    color: $background;
     background-color: $foreground;
     position: relative;
     display: inline;
@@ -207,15 +216,39 @@ a {
 
   .project-content {
     font-size: 20px;
-    border: 2px solid $background;
-    font-size-adjust: 20px;
-    padding: 30px 20px;
+    font-family: 'Roboto Slab', serif;
 
-    border-radius: 8px;
+    border-top: 1px solid $background;
+    border-left: 1px solid $background;
+    border-top-left-radius: 8px;
+
+    font-size-adjust: 20px;
+    padding: 30px 20px 10px 20px;
     margin-top: -20px;
     z-index: 1;
 
-    transition: border-color linear 0.3s;
+    transition: border-color $color-transition;
+
+    .subtitle {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 1px solid $background;
+      border-bottom: 1px solid $background;
+      transform: rotate(-45deg);
+
+      transition: border-color $color-transition,
+        transform $expand-time;
+
+      &.expand {
+        transform: rotate(45deg);
+      }
+    }
   }
 
   .project-details {
@@ -228,16 +261,47 @@ a {
     transition: font-size $half-expand-time,
       opacity $expand-time $half-expand-time;
 
+
+    img {
+      max-height: attr(mxh px);
+      transition: max-height $half-expand-time;
+    }
+
+    em {
+      font-style: normal;
+      font-weight: 700;
+    }
+
     hr {
       margin: 20px 0px;
-      transition: border-top linear 0.3s,
+      transition: border-top $color-transition,
         margin $half-expand-time;
       border-top: 1px solid #47444488;
+    }
+
+    ul {
+      list-style-type: disc;
+
+      li {
+        margin-top: 10px;
+        margin-left: 20px;
+        transition: margin $half-expand-time;
+      }
     }
 
     &:not(.expand) {
       font-size: 0;
       opacity: 0;
+
+      img {
+        max-height: 0px;
+        transition: max-height $expand-time $half-expand-time;
+      }
+
+      li {
+        margin: 0;
+        transition: margin $expand-time $half-expand-time;
+      }
 
       hr {
         margin: 0;
@@ -252,7 +316,13 @@ a {
 
   &:hover {
     .project-content {
-      border: 2px solid $green;
+      border-top: 1px solid $green;
+      border-left: 1px solid $green;
+
+      .arrow {
+        border-bottom: 1px solid $green;
+        border-right: 1px solid $green;
+      }
 
       .project-details {
         hr {
