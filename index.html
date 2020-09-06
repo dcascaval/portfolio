@@ -48,6 +48,7 @@
       if (!target) return;
       expandClass(target, "project-details", "expand");
       expandClass(target, "arrow", "expand");
+      expandClass(target, "preview", "expand")
     }
 
     function switchTo(section) {
@@ -77,14 +78,14 @@
       if (!currentSection || !nextSection) return;
 
 
-      let DELAY = 200;
+      let DELAY = 250;
       currentSection.classList.add("fade");
       setTimeout(() => {
         currentSection.classList.remove("show");
         nextSection.classList.add("show");
         setTimeout(() => {
           nextSection.classList.remove("fade");
-        }, DELAY);
+        }, DELAY / 8);
       }, DELAY);
     }
   </script>
@@ -117,8 +118,7 @@
         <ul>
           <li onclick="switchTo('projects')" class="active">Projects</li>
           <li onclick="switchTo('resume')">Resume</li>
-          <li onclick="switchTo('musings')">Musings</li>
-          <li onclick="switchTo('books')">Books</li>
+          <!-- <li onclick="switchTo('demos')">Demos</li> -->
         </ul>
       </nav>
       <div class="main-content">
@@ -134,14 +134,14 @@
             <div class="project-content">
               <div class="subtitle">
                 <p>
-                  Parallel, high performance component library for Rhino3D and Grasshopper3D.
+                  Parallel, high performance component library for Grasshopper3D.
                 </p>
                 <div class="arrow"></div>
               </div>
               <div class="project-details" onclick="swallow(event)">
                 <hr>
                 <img mxh="85" src="icon_banner_3.png"></img>
-                <a target="_blank" href="https://www.grasshopper3d.com/">Grasshopper3D</a> is a visual programming language for creating parametric models embedded in <a target="_blank" href="https://www.rhino3d.com/">Rhino3D</a>. It works as a directed graph of components, each performing an operation, that send trees of data along edges to trigger recomputation. <br><br> <a target="_blank" href="https://www.food4rhino.com/app/impala">Impala</a> dramatically improves the performance of Grasshopper on models that handle large amounts of data. At its core, it provides a reimplementation of standard components to run in parallel as a drop-in replacement to the Grasshopper standard library. Impala is excellent for processing <em>point clouds</em>, <em>landscape data</em>, and <em>physical simulations</em>.<br><br> Impala combines this strategy with a few key insights to maximize the available performance benefit:
+                <a target="_blank" href="https://www.grasshopper3d.com/">Grasshopper3D</a> is a visual programming language for creating parametric models embedded in the CAD platform <a target="_blank" href="https://www.rhino3d.com/">Rhino3D</a>. It works as a directed graph of components, each performing an operation, that send trees of data along edges to trigger recomputation. <br><br> <a target="_blank" href="https://www.food4rhino.com/app/impala">Impala</a> dramatically improves the performance of Grasshopper on models that handle large amounts of data. At its core, it provides a reimplementation of standard components to run in parallel as a drop-in replacement to the Grasshopper standard library. Impala is excellent for processing <em>point clouds</em>, <em>landscape data</em>, and <em>physical simulations</em>.<br><br> Impala combines this strategy with a few key insights to maximize the available performance benefit:
                 <ul>
                   <li><em>Minimize allocation overhead.</em> Impala re-implements the basic data tree structure. This allows space to be preallocated, trees to be filled in parallel, and a compact encoding of tree paths.</li>
                   <li><em>Restrict type-casts.</em> Impala assumes a homogenous type of data in a tree, as is nearly always the case in practice. This allows type conversions to happen much more quickly for large data trees.</li>
@@ -176,7 +176,7 @@
             <div class="project-content">
               <div class="subtitle">
                 <p>
-                  Panel Designer & Façade Painter
+                  Constraint-Based Modeling: Panel Designer & Façade Painter
                 </p>
                 <div class="arrow"></div>
               </div>
@@ -228,6 +228,9 @@
             </div>
           </div>
 
+        </div>
+        <div id="demos" class="fade">
+          <div class="content">A collection of sketches.</div>
         </div>
       </div>
     </div>
