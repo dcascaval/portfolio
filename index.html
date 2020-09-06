@@ -18,10 +18,20 @@
       document.body.classList.remove("preload")
     });
 
+    function expandClass(element, className, property) {
+      if (!element) return false;
+      if (element.className.includes(className)) {
+        element.classList.toggle(property);
+        return true;
+      }
+      for (let i = 0; i < element.children.length; i++) {
+        if (expandClass(element.children[i], className, property)) return true;
+      }
+      return false;
+    }
+
     function expand(event) {
-      console.log(event.currentTarget);
-      let content = event.currentTarget.children[1].children[0];
-      content.classList.toggle("expand");
+      expandClass(event.target, "project-details", "expand");
     }
 
     function switchTo(section) {
@@ -123,6 +133,14 @@
                 Sed vulputate mi sit amet. Sollicitudin aliquam ultrices sagittis orci a. Posuere ac ut consequat semper
                 viverra nam. A iaculis at erat pellentesque. Posuere urna nec tincidunt praesent semper feugiat nibh.
                 Lorem mollis aliquam ut porttitor leo a diam sollicitudin.
+                <br><br>
+                Sed vulputate mi sit amet. Sollicitudin aliquam ultrices sagittis orci a. Posuere ac ut consequat semper
+                viverra nam. A iaculis at erat pellentesque. Posuere urna nec tincidunt praesent semper feugiat nibh.
+                Lorem mollis aliquam ut porttitor leo a diam sollicitudin.
+                <br><br>
+                Sed vulputate mi sit amet. Sollicitudin aliquam ultrices sagittis orci a. Posuere ac ut consequat semper
+                viverra nam. A iaculis at erat pellentesque. Posuere urna nec tincidunt praesent semper feugiat nibh.
+                Lorem mollis aliquam ut porttitor leo a diam sollicitudin.
               </div>
             </div>
           </div>
@@ -130,6 +148,14 @@
             <div class="project-title">DAG</div>
             <div class="project-content">
               Data-parallel language compiled for GPU.
+              <div class="project-details">
+                <hr>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Vitae tortor condimentum lacinia quis vel eros donec ac. Ac tortor vitae purus
+                faucibus ornare suspendisse sed nisi lacus. Sapien eget mi proin sed libero. Egestas sed sed risus
+                pretium
+                quam.
+              </div>
             </div>
           </div>
           <div class="project-wrapper" onclick="expand(event)">
