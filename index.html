@@ -17,6 +17,31 @@
     document.addEventListener("DOMContentLoaded", function () {
       document.body.classList.remove("preload")
     });
+
+    function switchTo(section) {
+      let navLinks = document.querySelectorAll(".navbar li");
+      // Switch the activity in the navbar.
+      for (let i = 0; i < navLinks.length; i++) {
+        if (navLinks[i].className.includes("active")) {
+          navLinks[i].classList.remove("active");
+        }
+        if (navLinks[i].textContent.toLowerCase().includes(section)) {
+          navLinks[i].classList.add("active");
+        }
+      }
+
+      let sections = document.querySelector(".main-content").children;
+      // Switch the displayed page section.
+
+      for (let i = 0; i < sections.length; i++) {
+        if (sections[i].className.includes("show")) {
+          sections[i].classList.remove("show");
+        }
+        if (sections[i].id.includes(section)) {
+          sections[i].classList.add("show");
+        }
+      }
+    }
   </script>
 </head>
 
@@ -45,54 +70,77 @@
     <div class="content-wrapper">
       <nav class="navbar">
         <ul>
-          <li class="active">Projects</li>
-          <li>Resume</li>
-          <li>Musings</li>
-          <li>Books</li>
+          <li onclick="switchTo('projects')" class="active">Projects</li>
+          <li onclick="switchTo('resume')">Resume</li>
+          <li onclick="switchTo('musings')">Musings</li>
+          <li onclick="switchTo('books')">Books</li>
         </ul>
       </nav>
       <div class="main-content">
-        <div class="content">
-          I'm a PhD student in Computer Science at the <a target="_blank"
-            href="https://www.cs.washington.edu/">University of Washington</a> advised by <a target="_blank"
-            href="https://homes.cs.washington.edu/~bodik/">Ras Bodik</a> and <a target="_blank"
-            href="https://homes.cs.washington.edu/~adriana/">Adriana Schulz</a>.
-        </div>
-        <div class="content">
-          I am working on problems in computational geometry and shape manipulation using program synthesis and related
-          tools. Right now, that includes representing 3D CAD models as programs and developing synthesis-based tools
-          for <em>bidirectional editing</em>, <em>constraint inference</em>, and <em>feature transfer</em>. I am always
-          looking for new applications for this work, particularly in the domain of improving architecture, design, and
-          the built environment.
-        </div>
-        <div class="project-wrapper">
-          <div class="project-title">Impala</div>
-          <div class="project-content">
-            Parallel, high performance component library for Rhino3D and Grasshopper3D.
+        <div id="projects" class="show">
+          <div class="content">
+            I'm a PhD student in Computer Science at the <a target="_blank"
+              href="https://www.cs.washington.edu/">University of Washington</a> advised by <a target="_blank"
+              href="https://homes.cs.washington.edu/~bodik/">Ras Bodik</a> and <a target="_blank"
+              href="https://homes.cs.washington.edu/~adriana/">Adriana Schulz</a>.
+          </div>
+          <div class="content">
+            I am working on problems in computational geometry and shape manipulation using program synthesis and
+            related
+            tools. Right now, that includes representing 3D CAD models as programs and developing synthesis-based tools
+            for <em>bidirectional editing</em>, <em>constraint inference</em>, and <em>feature transfer</em>. I am
+            always
+            looking for new applications for this work, particularly in the domain of improving architecture, design,
+            and
+            the built environment.
+          </div>
+          <div class="project-wrapper">
+            <div class="project-title">Impala</div>
+            <div class="project-content">
+              Parallel, high performance component library for Rhino3D and Grasshopper3D.
+            </div>
+          </div>
+          <div class="project-wrapper">
+            <div class="project-title">DAG</div>
+            <div class="project-content">
+              Data-parallel language compiled for GPU.
+            </div>
+          </div>
+          <div class="project-wrapper">
+            <div class="project-title">Modeling Tools</div>
+            <div class="project-content">
+              Panel Designer & Façade Painter
+            </div>
+          </div>
+          <div class="project-wrapper">
+            <div class="project-title">Timber Fabrication</div>
+            <div class="project-content">
+              Toolpathing and planning for 6-axis robotic steam-bending.
+            </div>
+          </div>
+          <div class="project-wrapper">
+            <div class="project-title">Sentient Concrete</div>
+            <div class="project-content">
+              Environmentally-responsive surface geometry
+            </div>
           </div>
         </div>
-        <div class="project-wrapper">
-          <div class="project-title">DAG</div>
-          <div class="project-content">
-            Data-parallel language compiled for GPU.
+        <div id="resume">
+          <div class="content">
+            Before starting my PhD, I spent five years at Carnegie Mellon University, studying Architecture and Computer
+            Science.
           </div>
-        </div>
-        <div class="project-wrapper">
-          <div class="project-title">Modeling Tools</div>
-          <div class="project-content">
-            Panel Designer & Façade Painter
+          <div class="project-wrapper">
+            <div class="project-title">Join</div>
+            <div class="project-content">
+              Startup providing intelligent collaboration tools for the construction industry.
+            </div>
           </div>
-        </div>
-        <div class="project-wrapper">
-          <div class="project-title">Timber Fabrication</div>
-          <div class="project-content">
-            Toolpathing and planning for 6-axis robotic steam-bending.
-          </div>
-        </div>
-        <div class="project-wrapper">
-          <div class="project-title">Sentient Concrete</div>
-          <div class="project-content">
-            Environmentally-responsive surface geometry
+          <div class="project-wrapper">
+            <div class="project-title">NBBJ</div>
+            <div class="project-content">
+              World-class architecture firm, innovating in sustainability and design technology.
+            </div>
           </div>
         </div>
       </div>

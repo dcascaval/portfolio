@@ -118,6 +118,20 @@ a:hover {
 }
 
 .main-content {
+  transition: all linear 0.5s;
+}
+
+.main-content > :not(.show) {
+  display: none;
+}
+.main-content > :not(.show) .content {
+  opacity: 0;
+}
+.main-content > :not(.show) .project-wrapper {
+  opacity: 0;
+}
+
+.main-content .show {
   min-height: 100%;
   width: 90%;
   min-width: 800px;
@@ -129,7 +143,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
 }
-.main-content .content {
+.main-content .show .content {
   width: 80%;
   font-family: "Roboto Slab", sans-serif;
   line-height: 140%;
@@ -137,20 +151,20 @@ a:hover {
   margin-top: 20px;
   font-size: 20px;
 }
-.main-content .content:first-of-type {
+.main-content .show .content:first-of-type {
   margin-top: 60px;
 }
-.main-content .content em {
+.main-content .show .content em {
   font-style: inherit;
   font-weight: 700;
 }
 
-.project-wrapper {
+.show .project-wrapper {
   width: 80%;
   margin-top: 40px;
   color: #474444;
 }
-.project-wrapper .project-title {
+.show .project-wrapper .project-title {
   font-size: 30px;
   margin-left: 40px;
   padding: 0px 10px;
@@ -160,7 +174,7 @@ a:hover {
   display: inline;
   z-index: 2;
 }
-.project-wrapper .project-content {
+.show .project-wrapper .project-content {
   font-size: 20px;
   border: 2px solid #474444;
   font-size-adjust: 20px;
@@ -170,6 +184,6 @@ a:hover {
   z-index: 1;
   transition: border-color linear 0.3s;
 }
-.project-wrapper:hover .project-content {
+.show .project-wrapper:hover .project-content {
   border: 2px solid #54ca72;
 }

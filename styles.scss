@@ -140,6 +140,22 @@ a {
 }
 
 .main-content {
+  transition: all linear 0.5s;
+}
+
+.main-content>:not(.show) {
+  display: none;
+
+  .content {
+    opacity: 0;
+  }
+
+  .project-wrapper {
+    opacity: 0;
+  }
+}
+
+.main-content .show {
   min-height: 100%;
   width: 90%;
   min-width: 800px;
@@ -170,7 +186,7 @@ a {
   }
 }
 
-.project-wrapper {
+.show .project-wrapper {
   width: 80%;
   margin-top: 40px;
   color: $background;
@@ -197,9 +213,6 @@ a {
     z-index: 1;
 
     transition: border-color linear 0.3s;
-
-
-
   }
 
   &:hover {
