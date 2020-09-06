@@ -14,6 +14,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       document.body.classList.remove("preload")
+
     });
 
     function expandClass(element, className, property) {
@@ -47,8 +48,8 @@
       let target = getAncestor(event.target, "project-wrapper");
       if (!target) return;
       expandClass(target, "project-details", "expand");
+      expandClass(target, "project-content", "expand");
       expandClass(target, "arrow", "expand");
-      expandClass(target, "preview", "expand")
     }
 
     function switchTo(section) {
@@ -131,14 +132,14 @@
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Impala</div>
-            <div class="project-content">
+            <div class="project-content expand">
               <div class="subtitle">
                 <p>
                   Parallel, high performance component library for Grasshopper3D.
                 </p>
-                <div class="arrow"></div>
+                <div class="arrow expand"></div>
               </div>
-              <div class="project-details" onclick="swallow(event)">
+              <div class="project-details expand" onclick="swallow(event)">
                 <hr>
                 <img mxh="85" src="icon_banner_3.png"></img>
                 <a target="_blank" href="https://www.grasshopper3d.com/">Grasshopper3D</a> is a visual programming language for creating parametric models embedded in the CAD platform <a target="_blank" href="https://www.rhino3d.com/">Rhino3D</a>. It works as a directed graph of components, each performing an operation, that send trees of data along edges to trigger recomputation. <br><br> <a target="_blank" href="https://www.food4rhino.com/app/impala">Impala</a> dramatically improves the performance of Grasshopper on models that handle large amounts of data. At its core, it provides a reimplementation of standard components to run in parallel as a drop-in replacement to the Grasshopper standard library. Impala is excellent for processing <em>point clouds</em>, <em>landscape data</em>, and <em>physical simulations</em>.<br><br> Impala combines this strategy with a few key insights to maximize the available performance benefit:
@@ -147,60 +148,71 @@
                   <li><em>Restrict type-casts.</em> Impala assumes a homogenous type of data in a tree, as is nearly always the case in practice. This allows type conversions to happen much more quickly for large data trees.</li>
                   <li><em>Algorithmic optimization.</em> Impala replaces some quadratic implementations in the standard library with custom strategies that have improved parallel complexity.</li>
                 </ul>
+                Drop-in replacement of existing components with Impala variants yielded speedups of 10-20x relative to the base Grasshopper implementation on a mix of standard and randomly-generated workloads. More speedup is achieved in adversarial cases, or where several Impala components can be chained together. Additionally, using Impala can significantly reduce the memory overhead used by a Grasshopper script, resulting in smoother overall interactivity.
               </div>
             </div>
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">DAG</div>
-
-
-            <div class="project-content">
+            <div class="project-content expand">
               <div class="subtitle">
                 <p>
                   Data-parallel programming language compiled for GPU.
                 </p>
-                <div class="arrow"></div>
+                <div class="arrow expand"></div>
               </div>
-              <div class="project-details" onclick="swallow(event)">
+              <div class="project-details expand" onclick="swallow(event)">
                 <hr>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Vitae tortor condimentum lacinia quis vel eros donec ac. Ac tortor vitae purus
-                faucibus ornare suspendisse sed nisi lacus. Sapien eget mi proin sed libero. Egestas sed sed risus
-                pretium
-                quam.
+                <img src="julia_render.png"></img>
+                <br><br>
+                As part of CMU's <a target="_blank" href="http://www.cs.cmu.edu/~418/">15-418</a>, Parallel Computer Architecture and Programming, <a target="_blank" href="https://www.linkedin.com/in/nick-roberts-135238139/">Nick Roberts</a> and I designed an implemented a programming language to easily prototype different strategies for parallelisation on the GPU.
+                <br><br>
+                Our basic concept is to represent each program point as an expression node in directed acyclic graph. This directly expresses which nodes contain dependencies. We derive a traversal of this DAG representing a particular parallel execution, and optimize our choices based on statically gathered heuristics such as minimizing memory transfer.
+                <br><br>
+                We directly model regular parallelism inherent in the program as a set of first-class primitive parallel-expressions, which include <code>for</code>, <code>zip_with</code>, <code>filter_with</code>, <code>reduce</code>, <code>scan</code>, <code>range</code>, and <code>transpose</code>. For a detailed description of the semantics of these primitives, the interested reader can refer to the <a target="_blank" href="https://nick-and-dan.github.io/418/files/report.pdf">full report</a>.
+                <br><br>
+                Together these allow the user to precisely convey their intent for what should be parallelized. Our compiler then analyzes nested and consecutive parallel-fors and lowers them to <a target="_blank" href="https://en.wikipedia.org/wiki/CUDA">CUDA kernel launches</a>, performing loop fusion and merging nested parallelism in attempting to minimize the number of launches needed.
+                <br>
+                <img src="dag_structure.png"></img>
+                <br>
+                We demonstrate the efficacy of our system through concise and performant programs performing large matrix multiplications, fractal renderings (seen above), and previous 15-418 course assignments -- all problems that are embarassingly parallel, but somewhat painful to implement. We theorize that this approach would work reasonably well with other parallel GPU backends.
               </div>
             </div>
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Modeling Tools</div>
-            <div class="project-content">
+            <div class="project-content expand">
               <div class="subtitle">
                 <p>
                   Constraint-Based Modeling: Panel Designer & Façade Painter
                 </p>
-                <div class="arrow"></div>
+                <div class="arrow expand"></div>
+              </div>
+              <div class="project-details expand" onclick="swallow(event)">
+                <hr>
+                As part of the design computation team at <a target="_blank" href="http://www.nbbj.com/">NBBJ</a>, I worked on solutions to aid the design and modeling process of building facades, which are often complex and unwieldy to manipulate and iterate on in existing building information modeling pipelines.
               </div>
             </div>
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Timber Fabrication</div>
-            <div class="project-content">
+            <div class="project-content expand">
               <div class="subtitle">
                 <p>
                   Toolpathing and planning for 6-axis robotic steam-bending.
                 </p>
-                <div class="arrow"></div>
+                <div class="arrow expand"></div>
               </div>
             </div>
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Sentient Concrete</div>
-            <div class="project-content">
+            <div class="project-content expand">
               <div class="subtitle">
                 <p>
                   Environmentally-responsive surface geometry
                 </p>
-                <div class="arrow"></div>
+                <div class="arrow expand"></div>
               </div>
             </div>
           </div>
@@ -211,19 +223,19 @@
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">Join</div>
-            <div class="project-content">
+            <div class="project-content expand">
               Startup providing intelligent collaboration tools for the construction industry.
             </div>
           </div>
           <div class="project-wrapper" onclick="expand(event)">
             <div class="project-title">NBBJ</div>
-            <div class="project-content">
+            <div class="project-content expand">
               World-class architecture firm, innovating in sustainability and design technology.
             </div>
           </div>
           <div class="project-wrapper">
             <div class="project-title">Carnegie Mellon</div>
-            <div class="project-content">
+            <div class="project-content expand">
               Worked as a research assistant and teaching assistant for courses ranging from digital media to compiler design.
             </div>
           </div>
