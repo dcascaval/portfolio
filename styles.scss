@@ -310,10 +310,19 @@ a {
     transition: font-size $half-expand-time,
       opacity $expand-time $half-expand-time;
 
+    .citation {
+      font-size: 12px;
+      font-weight: 700;
+    }
 
     img {
       max-height: attr(mxh px);
       transition: max-height $half-expand-time;
+    }
+
+    figcaption {
+      font-size: 12px;
+      text-align: center;
     }
 
     em {

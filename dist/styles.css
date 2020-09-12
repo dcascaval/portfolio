@@ -241,9 +241,17 @@ a:hover {
   height: auto;
   transition: font-size 0.125s, opacity 0.25s 0.125s;
 }
+.show .project-wrapper .project-details .citation {
+  font-size: 12px;
+  font-weight: 700;
+}
 .show .project-wrapper .project-details img {
   max-height: attr(mxh px);
   transition: max-height 0.125s;
+}
+.show .project-wrapper .project-details figcaption {
+  font-size: 12px;
+  text-align: center;
 }
 .show .project-wrapper .project-details em {
   font-style: normal;
