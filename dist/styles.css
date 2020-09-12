@@ -52,9 +52,9 @@ body {
 .sidebar .headshot {
   margin-top: 100px;
   background-color: #f6f7ef;
-  width: 216px;
-  height: 216px;
-  border: 8px solid #54ca72;
+  width: 212px;
+  height: 212px;
+  border: 6px solid #54ca72;
   border-radius: 100%;
   overflow: hidden;
 }
@@ -105,6 +105,7 @@ body {
   display: flex;
   border-color: #474444;
   color: #f6f7ef;
+  font-weight: 700;
   padding: 8px 16px;
   border-radius: 8px;
   border: 2px solid #474444;
@@ -223,6 +224,7 @@ a:hover {
 .show .project-wrapper .project-content .arrow {
   width: 20px;
   height: 20px;
+  margin-left: 10px;
   border-right: 1px solid #474444;
   border-bottom: 1px solid #474444;
   transform: rotate(-45deg);

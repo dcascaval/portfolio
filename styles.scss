@@ -68,9 +68,9 @@ body {
   .headshot {
     margin-top: 100px;
     background-color: $foreground;
-    width: 216px;
-    height: 216px;
-    border: 8px solid $green;
+    width: 212px;
+    height: 212px;
+    border: 6px solid $green;
     border-radius: 100%;
     overflow: hidden;
   }
@@ -127,6 +127,7 @@ body {
     display: flex;
     border-color: $background;
     color: $foreground;
+    font-weight: 700;
 
     padding: 8px 16px;
     border-radius: 8px;
@@ -285,6 +286,7 @@ a {
     .arrow {
       width: 20px;
       height: 20px;
+      margin-left: 10px;
       border-right: 1px solid $background;
       border-bottom: 1px solid $background;
       transform: rotate(-45deg);
