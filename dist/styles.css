@@ -168,7 +168,8 @@ a:hover {
 .main-content .show .content:first-of-type {
   margin-top: 60px;
 }
-.main-content .show .content em {
+
+em {
   font-style: inherit;
   font-weight: 700;
 }
@@ -177,6 +178,7 @@ a:hover {
   width: 80%;
   margin-top: 40px;
   color: #474444;
+  cursor: pointer;
 }
 .show .project-wrapper .project-title {
   font-size: 30px;
@@ -234,6 +236,7 @@ a:hover {
   transform: rotate(45deg);
 }
 .show .project-wrapper .project-details {
+  cursor: default;
   font-size: 16px;
   z-index: 1;
   box-sizing: border-box;

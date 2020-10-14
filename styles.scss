@@ -206,13 +206,13 @@ a {
       &:first-of-type {
         margin-top: 60px;
       }
-
-      em {
-        font-style: inherit;
-        font-weight: 700;
-      }
     }
   }
+}
+
+em {
+  font-style: inherit;
+  font-weight: 700;
 }
 
 
@@ -220,6 +220,7 @@ a {
   width: 80%;
   margin-top: 40px;
   color: $background;
+  cursor: pointer;
 
   .project-title {
     font-size: 30px;
@@ -301,6 +302,7 @@ a {
   }
 
   .project-details {
+    cursor: default;
     font-size: 16px;
     z-index: 1;
     box-sizing: border-box;
