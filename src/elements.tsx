@@ -98,13 +98,20 @@ export const Click = ({ name, click, children }: ClickProps) => {
   return element;
 };
 
+// The downsides to this templating scheme are that:
+// - One can't use string event handlers, as React wouldn't know what
+//   to do with them, so the render function prevents anything of the
+//   sort from being assigned to `onClick`, and prevents anything being
+//   assigned to `onclick` directly.
+// - Inside the same event handlers, `'` is sanitized to `&#x27;`, which
+//   we then have to remove.
 export function render(element: JSX.Element) {
   let result: string = ReactDOMServer.renderToStaticMarkup(element)
     //@ts-ignore
     .replaceAll("__click", "onclick")
     .replaceAll("&#x27;", "'");
-  fs.writeFile("ts_index.html", result, (err) => {
+  fs.writeFile("index.html", result, (err) => {
     if (err) throw err;
-    console.log("Output element to ts_index.");
+    console.log("Successfully rendered JSX");
   });
 }
