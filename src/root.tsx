@@ -19,20 +19,11 @@ import TA from "./resume/ta";
 const Head = () => (
   <head>
     <meta charSet="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.2, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.2, shrink-to-fit=no" />
     <meta name="description" content="Architecture and Computational Design" />
-    <meta
-      name="keywords"
-      content="Architecture, Design, Computation, Environment, Research"
-    />
+    <meta name="keywords" content="Architecture, Design, Computation, Environment, Research" />
     <meta name="author" content="Dan Cascaval" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="minireset.css" />
     <link rel="stylesheet" href="dist/styles.css" />
     <title>Dan Cascaval</title>

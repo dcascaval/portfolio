@@ -1,5 +1,3 @@
-console.log("actions")
-
 document.addEventListener("DOMContentLoaded", function () {
   document.body.classList.remove("preload")
 });
@@ -32,7 +30,6 @@ function getAncestor(element, className) {
 }
 
 function expand(event) {
-  console.log("expanding");
   let target = getAncestor(event.target, "project-wrapper");
   if (!target) return;
   expandClass(target, "project-details", "expand");

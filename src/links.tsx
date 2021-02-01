@@ -12,8 +12,7 @@ export const links = {
   "Eddy Man Kim": "http://eddyman.kim/",
   "Nick Roberts": "https://www.linkedin.com/in/nick-roberts-135238139/",
   NBBJ: "http://www.nbbj.com/",
-  AU18:
-    "https://www.autodesk.com/autodesk-university/class/Cross-Platform-Unitized-Curtain-Wall-2018",
+  AU18: "https://www.autodesk.com/autodesk-university/class/Cross-Platform-Unitized-Curtain-Wall-2018",
   CAADRIA18: "http://papers.cumincad.org/data/works/att/caadria2018_333.pdf",
   "15-418": "http://www.cs.cmu.edu/~418/",
   "418-report": "nick-and-dan.github.io/418/files/report.pdf",
@@ -22,8 +21,7 @@ export const links = {
   Rhino3D: "https://www.rhino3d.com/",
   Impala: "https://www.food4rhino.com/app/impala",
   Join: "https://join.build",
-  "robarch-paper":
-    "https://link.springer.com/article/10.1007/s41693-018-0014-x",
+  "robarch-paper": "https://link.springer.com/article/10.1007/s41693-018-0014-x",
   Github: "https://github.com/dcascaval",
   Instagram: "https://www.instagram.com/de.methodic/",
 };

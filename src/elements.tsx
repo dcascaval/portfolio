@@ -78,9 +78,7 @@ export const Section = ({ title, classes, children }: SectionProps) => (
   </section>
 );
 
-export const Content = ({ children }) => (
-  <div className="content">{children}</div>
-);
+export const Content = ({ children }) => <div className="content">{children}</div>;
 
 type ClickProps = {
   name: string;
