@@ -29,7 +29,7 @@ object LinkContext
       "AU18" -> "https://www.autodesk.com/autodesk-university/class/Cross-Platform-Unitized-Curtain-Wall-2018",
       "CAADRIA18" -> "http://papers.cumincad.org/data/works/att/caadria2018_333.pdf",
       "15-418" -> "http://www.cs.cmu.edu/~418/",
-      "418-report" -> "nick-and-dan.github.io/418/files/report.pdf",
+      "418-report" -> "https://nick-and-dan.github.io/418/files/report.pdf",
       "CUDA" -> "https://en.wikipedia.org/wiki/CUDA",
       "Grasshopper3D" -> "https://www.grasshopper3d.com/",
       "Rhino3D" -> "https://www.rhino3d.com/",

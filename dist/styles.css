@@ -112,13 +112,15 @@ body {
 }
 
 .sidebar .links a {
+  border-radius: 4px;
   width: 24px;
   height: 24px;
   padding: 2px;
 }
 
 .sidebar .links a:hover {
-  color: #54ca72;
+  background-color: #35ab53;
+  border-bottom: none;
 }
 
 .content-wrapper {

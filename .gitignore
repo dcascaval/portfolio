@@ -16,6 +16,7 @@ project/metals.sbt
 # Javascript
 node_modules/
 yarn.lock
+*.css.map
 
 # MacOS
 .DS_Store
