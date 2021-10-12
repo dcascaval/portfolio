@@ -8,7 +8,6 @@ lazy val root = project
 
 lazy val portfolio = crossProject(JSPlatform, JVMPlatform)
   .in(file("."))
-  .jsConfigure { project => project.enablePlugins(ScalaJSBundlerPlugin) }
   .settings(
     name := "portfolio",
     version := "0.1-SNAPSHOT",
@@ -27,6 +26,5 @@ lazy val portfolio = crossProject(JSPlatform, JVMPlatform)
       ("org.scala-js" %%% "scalajs-dom" % "1.2.0")
         .cross(CrossVersion.for3Use2_13)
     ),
-    scalaJSUseMainModuleInitializer := true,
-    webpackBundlingMode := BundlingMode.LibraryOnly()
+    scalaJSUseMainModuleInitializer := true
   )

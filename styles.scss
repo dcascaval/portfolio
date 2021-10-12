@@ -43,10 +43,12 @@ body {
   min-height: 100vh;
 }
 
-@media only screen and (orientation: portrait) {
+@media only screen and (max-width: 700px) {
   .sidebar {
-    margin-bottom: 0px;
-    align-self: flex-start;
+    margin-bottom: 0px !important;
+    align-self: flex-start !important;
+    z-index: unset !important;
+    // background-color: red !important;
   }
 }
 
@@ -125,16 +127,30 @@ body {
 
 .navbar {
   font-size: 24px;
+  height: 4 * $SPACE;
   min-height: 4 * $SPACE;
   background-color: $background;
+  margin-left: 10%;
   display: flex;
   align-items: center;
+
+  .floater {
+    // width: 400px;
+    // height: 4 * $SPACE;
+    // background-color: red;
+    // opacity: 0.5;
+    position: absolute;
+    z-index: 1;
+    // border-left: 2px solid white;
+    pointer-events: visible;
+  }
 
   ul {
     min-width: 300px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    z-index: 2;
   }
 
   li {
@@ -145,17 +161,18 @@ body {
 
     padding: 8px 16px;
     border-radius: 8px;
-    border: 2px solid $background;
+    // border: 2px solid $background;
     transition: border-color linear 0.2s;
     cursor: pointer;
 
     &.active {
       cursor: auto;
-      border: 2px solid $green;
+      color: $background;
+      // border: 2px solid $green;
     }
 
     &:hover:not(.active) {
-      border: 2px solid $foreground;
+      // border: 2px solid $foreground;
     }
   }
 }

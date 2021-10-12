@@ -69,6 +69,10 @@ object Tags:
   def em = Tag("em")
   def hr = ShortTag("hr")
   def br = ShortTag("br")
+
+  def svg = Tag("svg")
+  def path = Tag("path")
+
   def <>(children: Element*) = Fragment(children)
 
 extension (text: String)

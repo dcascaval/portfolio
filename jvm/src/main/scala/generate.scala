@@ -28,7 +28,8 @@ object Homepage:
       link("rel" -> "icon", "href" -> "icons/favicon.ico"),
       title / "Dan Cascaval",
       script("src" -> "dist/actions.js"),
-      script("src" -> "dist/live.js")
+      script("src" -> "dist/live.js"),
+      script("src" -> "js/target/scala-3.0.2/portfolio-fastopt.js")
     )
 
   def navtab(name: String) =
@@ -36,9 +37,10 @@ object Homepage:
 
   val navbar =
     nav("navbar")(
+      svg("floater"),
       ul(
-        navtab("Projects")(cls = "active"),
-        navtab("Resume")
+        navtab("Projects")(cls = "active", id = "projects"),
+        navtab("Resume")(id = "resume")
       )
     )
 
