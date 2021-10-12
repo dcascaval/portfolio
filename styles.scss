@@ -48,7 +48,6 @@ body {
     margin-bottom: 0px !important;
     align-self: flex-start !important;
     z-index: unset !important;
-    // background-color: red !important;
   }
 }
 
@@ -135,13 +134,8 @@ body {
   align-items: center;
 
   .floater {
-    // width: 400px;
-    // height: 4 * $SPACE;
-    // background-color: red;
-    // opacity: 0.5;
     position: absolute;
     z-index: 1;
-    // border-left: 2px solid white;
     pointer-events: visible;
   }
 
@@ -161,9 +155,9 @@ body {
 
     padding: 8px 16px;
     border-radius: 8px;
-    // border: 2px solid $background;
     transition: border-color linear 0.2s;
     cursor: pointer;
+    user-select: none;
 
     &.active {
       cursor: auto;
@@ -375,21 +369,20 @@ em {
 
       img {
         max-height: 0px;
-        transition: max-height $expand-time $half-expand-time;
+        transition: max-height $expand-time; // $half-expand-time;
       }
 
       li {
         margin: 0;
-        transition: margin $expand-time $half-expand-time;
+        transition: margin $expand-time; // $half-expand-time;
       }
 
       hr {
         margin: 0;
-        transition: margin $expand-time $half-expand-time;
+        transition: margin $expand-time; // $half-expand-time;
       }
 
-      transition: opacity $half-expand-time,
-        font-size $expand-time $half-expand-time;
+      transition: opacity $half-expand-time, font-size $expand-time; // $half-expand-time;
     }
   }
 

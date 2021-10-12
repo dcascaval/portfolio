@@ -184,6 +184,10 @@ body {
   -webkit-transition: border-color linear 0.2s;
   transition: border-color linear 0.2s;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .navbar li.active {
@@ -405,26 +409,26 @@ em {
 .show .project-wrapper .project-details:not(.expand) {
   font-size: 0;
   opacity: 0;
-  -webkit-transition: opacity 0.125s, font-size 0.25s 0.125s;
-  transition: opacity 0.125s, font-size 0.25s 0.125s;
+  -webkit-transition: opacity 0.125s, font-size 0.25s;
+  transition: opacity 0.125s, font-size 0.25s;
 }
 
 .show .project-wrapper .project-details:not(.expand) img {
   max-height: 0px;
-  -webkit-transition: max-height 0.25s 0.125s;
-  transition: max-height 0.25s 0.125s;
+  -webkit-transition: max-height 0.25s;
+  transition: max-height 0.25s;
 }
 
 .show .project-wrapper .project-details:not(.expand) li {
   margin: 0;
-  -webkit-transition: margin 0.25s 0.125s;
-  transition: margin 0.25s 0.125s;
+  -webkit-transition: margin 0.25s;
+  transition: margin 0.25s;
 }
 
 .show .project-wrapper .project-details:not(.expand) hr {
   margin: 0;
-  -webkit-transition: margin 0.25s 0.125s;
-  transition: margin 0.25s 0.125s;
+  -webkit-transition: margin 0.25s;
+  transition: margin 0.25s;
 }
 
 .show .project-wrapper:hover .project-content {

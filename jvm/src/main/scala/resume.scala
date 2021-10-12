@@ -8,7 +8,7 @@ object Join extends Component:
     subtitle = "Software Engineer, 2019-2020"
   )(
     t / "*[Join]* is a San Francisco-based software startup providing intelligent collaboration tools for the construction industry. Construction is an *incredibly complex industry* with many moving parts, and construction professionals are known for their dedication to the field and for the high demands they place on their tools of choice.",
-    br,
+    vspace,
     t / "While at Join, I worked as part of a small, fast-moving product team shipping production-quality code with an eye for making a positive impact in the lives of our users. I had the chance to work on every part of the stack --",
     ul(
       li /
@@ -28,9 +28,7 @@ object DesignComputation extends Component:
     title = "NBBJ",
     subtitle = "Design Computation Intern, Summer 2018"
   )(
-    t / "*[NBBJ]* is a world-class architecture firm based in Seattle, innovating in sustainability and design technology. I interned on the *Design Computation* team, tasked with understanding architectural design workflows and finding ways to make design software more efficient, scalable, and user-friendly.",
-    br,
-    t / "As part of the team, I worked on",
+    t / "*[NBBJ]* is a world-class architecture firm based in Seattle, innovating in sustainability and design technology. I interned on the *Design Computation* team, tasked with understanding architectural design workflows and finding ways to make design software more efficient, scalable, and user-friendly. As part of the team, I worked on:",
     ul(
       li /
         "*Automating* facade-modeling tools to handle patterns and allow designers to quickly iterate and optimize complex forms.",
