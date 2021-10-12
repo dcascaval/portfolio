@@ -1,0 +1,12 @@
+{
+  "files.watcherExclude": {
+    "**/target": true
+  },
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "/dist"
+    }
+  ]
+}
