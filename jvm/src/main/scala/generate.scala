@@ -9,7 +9,7 @@ object HTMLPage:
 object Homepage:
   val header =
     head(
-      meta("charSet" -> "utf-8"),
+      meta("charset" -> "utf-8"),
       meta("name" -> "viewport", "content" -> "width=device-width, initial-scale=1.2, shrink-to-fit=no"),
       meta("name" -> "description", "content" -> "Programming Languages and CAD"),
       meta(
@@ -17,6 +17,8 @@ object Homepage:
         "content" -> "Architecture, Design, Computation, Environment, Research"
       ),
       meta("name" -> "author", "content" -> "Dan Cascaval"),
+      link("rel" -> "preconnect", "href" -> "https://fonts.googleapis.com"),
+      link("rel" -> "preconnect", "href" -> "https://fonts.gstatic.com", attr / "crossorigin"),
       link(
         "href" -> "https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&amp;family=Roboto+Slab:wght@400;700&amp;display=swap",
         "rel" -> "stylesheet"
@@ -44,12 +46,15 @@ object Homepage:
       div("headshot")(
         img("src" -> "images/dan.jpg")
       ),
-      p("bio") / "Dan Cascaval",
-      p("email") / "cascaval@cs.washington.edu",
+      div("bio")(
+        p("name") / "Dan Cascaval",
+        p("email") / "cascaval@cs.washington.edu"
+      ),
       p("links")(
-        Link("Github"),
-        Link("LinkedIn"),
-        Link("Instagram")
+        LinkIcon("Github"),
+        LinkIcon("LinkedIn"),
+        LinkIcon("Instagram"),
+        LinkIcon("Mail")
       )
     )
 

@@ -38,7 +38,8 @@ object LinkContext
       "robarch-paper" -> "https://link.springer.com/article/10.1007/s41693-018-0014-x",
       "Github" -> "https://github.com/dcascaval",
       "Instagram" -> "https://www.instagram.com/de.methodic/",
-      "LinkedIn" -> "https://www.linkedin.com/in/dan-cascaval/"
+      "LinkedIn" -> "https://www.linkedin.com/in/dan-cascaval/",
+      "Mail" -> "mailto:cascaval@cs.washington.edu"
     )
 
 object ImageContext

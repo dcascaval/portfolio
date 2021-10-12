@@ -9,6 +9,7 @@ $color-transition: 0.1s linear;
 $expand-time: 0.25s;
 $half-expand-time: $expand-time / 2;
 
+$SPACE: 24px;
 
 .preload * {
   -webkit-transition: none !important;
@@ -23,7 +24,6 @@ html {
   background-color: $background;
 }
 
-
 *::selection {
   background: #54ca7244;
 }
@@ -32,7 +32,6 @@ html {
   background: #54ca7244;
 }
 
-
 body {
   min-height: 100%;
   font-family: "PT Sans", sans-serif;
@@ -40,61 +39,77 @@ body {
 
 .root {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   min-height: 100vh;
 }
 
 @media only screen and (orientation: portrait) {
-  .root {
-    flex-direction: column;
-    align-items: center;
+  .sidebar {
+    margin-bottom: 0px;
+    align-self: flex-start;
   }
-
-  .navbar {
-    justify-content: center;
-  }
-
 }
 
 .sidebar {
-  width: 33%;
-  min-width: 300px;
-  min-height: 100%;
+  align-self: flex-end;
+  min-width: 370px;
   background-color: #474444;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-bottom: $SPACE;
+  margin-bottom: -4 * $SPACE;
+  z-index: 1;
 
   .headshot {
-    margin-top: 100px;
+    margin-left: $SPACE;
+    margin-top: $SPACE;
     background-color: $foreground;
-    width: 212px;
-    height: 212px;
-    border: 6px solid $green;
+    width: 2.5 * $SPACE;
+    min-width: 2.5 * $SPACE;
+    height: 2.5 * $SPACE;
+    min-height: 2.5 * $SPACE;
+    border: 2px solid $green;
     border-radius: 100%;
     overflow: hidden;
   }
 
   .bio {
-    margin-top: 30px;
+    margin-top: $SPACE - 1;
+    margin-left: $SPACE;
     color: $foreground;
-    font-size: 40px;
-    font-weight: 700;
-  }
 
-  .email {
-    color: $foreground;
-    font-weight: 700;
-    letter-spacing: 0.7px;
+    .name {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+
+    .email {
+      margin-top: 4px;
+      font-size: 12px;
+    }
   }
 
   .links {
-    margin-top: 20px;
+    margin-top: $SPACE;
+    margin-left: $SPACE;
+    margin-right: $SPACE;
     display: flex;
     flex-direction: row;
-    width: 50%;
-    align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    min-width: 60px;
+    width: 60px;
+
+    a {
+      width: 24px;
+      height: 24px;
+      padding: 2px;
+
+      &:hover {
+        color: #54ca72;
+      }
+    }
   }
 }
 
@@ -106,17 +121,14 @@ body {
   background-color: $background;
 }
 
-
 .navbar {
-  font-size: 20px;
-  min-height: 100px;
-  width: 100%;
+  font-size: 24px;
+  min-height: 4 * $SPACE;
   background-color: $background;
   display: flex;
   align-items: center;
 
   ul {
-    width: 40%;
     min-width: 300px;
     display: flex;
     flex-direction: row;
@@ -143,10 +155,8 @@ body {
     &:hover:not(.active) {
       border: 2px solid $foreground;
     }
-
   }
 }
-
 
 a {
   color: $green-dark;
@@ -163,19 +173,19 @@ a {
   height: 100%;
   transition: all linear 0.5s;
 
-  >:not(.show) {
+  > :not(.show) {
     display: none;
   }
 
-  >.fade {
-    >* {
+  > .fade {
+    > * {
       opacity: 0 !important;
       transition: opacity 0.25s ease-out !important;
     }
   }
 
-  >:not(.fade) {
-    >* {
+  > :not(.fade) {
+    > * {
       opacity: 1 !important;
       transition: opacity 0.5s ease-in !important;
     }
@@ -197,7 +207,7 @@ a {
 
     .content {
       width: 80%;
-      font-family: 'Roboto Slab', serif;
+      font-family: "Roboto Slab", serif;
       line-height: 140%;
       color: $background;
       margin-top: 20px;
@@ -215,17 +225,16 @@ em {
   font-weight: 700;
 }
 
-
 .show .project-wrapper {
   width: 80%;
-  margin-top: 40px;
+  margin-top: 2 * $SPACE;
   color: $background;
   cursor: pointer;
 
   .project-title {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 700;
-    margin-left: 40px;
+    margin-left: 2 * $SPACE;
     padding: 0px 10px;
     color: $background;
     background-color: $foreground;
@@ -236,7 +245,7 @@ em {
 
   .project-content {
     font-size: 20px;
-    font-family: 'Roboto Slab', serif;
+    font-family: "Roboto Slab", serif;
 
     border-top: 1px solid $background;
     border-left: 1px solid $foreground;
@@ -259,7 +268,6 @@ em {
       margin-top: 10px;
       height: 42px;
 
-
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -277,14 +285,15 @@ em {
 
     .arrow {
       width: 20px;
+      min-width: 20px;
       height: 20px;
+      min-height: 20px;
       margin-left: 10px;
       border-right: 1px solid $background;
       border-bottom: 1px solid $background;
       transform: rotate(-45deg);
 
-      transition: border-color $color-transition,
-        transform $expand-time;
+      transition: border-color $color-transition, transform $expand-time;
 
       &.expand {
         transform: rotate(45deg);
@@ -325,8 +334,7 @@ em {
 
     hr {
       margin: 20px 0px;
-      transition: border-top $color-transition,
-        margin $half-expand-time;
+      transition: border-top $color-transition, margin $half-expand-time;
       border: 0;
       border-top: 1px solid #47444488;
     }
@@ -363,8 +371,7 @@ em {
       }
 
       transition: opacity $half-expand-time,
-      font-size $expand-time $half-expand-time;
-
+        font-size $expand-time $half-expand-time;
     }
   }
 

@@ -6,6 +6,11 @@ trait Component extends Element:
   val value: Element
   def render() = value.render()
 
+def LinkIcon(key: String) =
+  a("href" -> LinkContext(key), "target" -> "_blank")(
+    img("src" -> s"icons/$key.svg")
+  )
+
 def Link(key: String) =
   a("href" -> LinkContext(key), "target" -> "_blank") / key
 

@@ -9,7 +9,7 @@ object Intro extends Component:
     content /
       "I am working on problems in computational geometry and shape manipulation using program synthesis and related tools.Right now, that includes representing 3D CAD models as programs and developing synthesis-based tools for *bidirectional editing*, *constraint exploration*, and *design optimization*. I am always looking for new applications for this work, particularly in the domain of improving architecture, design, and the built environment.",
     content /
-      "My past work focuses on applications of parallel computing and constraint-based geometric modeling tools, as well as research in combining computation and fabrication to mak e more responsive environments. I completed my undergraduate degree as a dual major in both *Archiecture* and *Computer Science*, and I'm still working to intersect them-- if you're interested in combining these fields, please do reach out!"
+      "My past work focuses on applications of parallel computing and constraint-based geometric modeling tools, as well as research in combining computation and fabrication to mak e more responsive environments. I completed my undergraduate degree as a dual major in both *Architecture* and *Computer Science*, and I'm still working to intersect them-- if you're interested in combining these fields, please do reach out!"
   )
 
 object Impala extends Component:

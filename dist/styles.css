@@ -29,72 +29,75 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  min-height: 100vh;
-}
-
-@media only screen and (orientation: portrait) {
-  .root {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .navbar {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-}
-
-.sidebar {
-  width: 33%;
-  min-width: 300px;
-  min-height: 100%;
-  background-color: #474444;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  min-height: 100vh;
+}
+
+@media only screen and (orientation: portrait) {
+  .sidebar {
+    margin-bottom: 0px;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+  }
+}
+
+.sidebar {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  min-width: 370px;
+  background-color: #474444;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-bottom: 24px;
+  margin-bottom: -96px;
+  z-index: 1;
 }
 
 .sidebar .headshot {
-  margin-top: 100px;
+  margin-left: 24px;
+  margin-top: 24px;
   background-color: #f6f7ef;
-  width: 212px;
-  height: 212px;
-  border: 6px solid #54ca72;
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  min-height: 60px;
+  border: 2px solid #54ca72;
   border-radius: 100%;
   overflow: hidden;
 }
 
 .sidebar .bio {
-  margin-top: 30px;
+  margin-top: 23px;
+  margin-left: 24px;
   color: #f6f7ef;
-  font-size: 40px;
-  font-weight: 700;
 }
 
-.sidebar .email {
-  color: #f6f7ef;
+.sidebar .bio .name {
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: 0.7px;
+  letter-spacing: 1.2px;
+}
+
+.sidebar .bio .email {
+  margin-top: 4px;
+  font-size: 12px;
 }
 
 .sidebar .links {
-  margin-top: 20px;
+  margin-top: 24px;
+  margin-left: 24px;
+  margin-right: 24px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -102,13 +105,20 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 50%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-width: 60px;
+  width: 60px;
+}
+
+.sidebar .links a {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+}
+
+.sidebar .links a:hover {
+  color: #54ca72;
 }
 
 .content-wrapper {
@@ -125,9 +135,8 @@ body {
 }
 
 .navbar {
-  font-size: 20px;
-  min-height: 100px;
-  width: 100%;
+  font-size: 24px;
+  min-height: 96px;
   background-color: #474444;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -138,7 +147,6 @@ body {
 }
 
 .navbar ul {
-  width: 40%;
   min-width: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -232,7 +240,7 @@ a:hover {
 
 .main-content .show .content {
   width: 80%;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   line-height: 140%;
   color: #474444;
   margin-top: 20px;
@@ -250,15 +258,15 @@ em {
 
 .show .project-wrapper {
   width: 80%;
-  margin-top: 40px;
+  margin-top: 48px;
   color: #474444;
   cursor: pointer;
 }
 
 .show .project-wrapper .project-title {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 700;
-  margin-left: 40px;
+  margin-left: 48px;
   padding: 0px 10px;
   color: #474444;
   background-color: #f6f7ef;
@@ -269,7 +277,7 @@ em {
 
 .show .project-wrapper .project-content {
   font-size: 20px;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   border-top: 1px solid #474444;
   border-left: 1px solid #f6f7ef;
   font-size-adjust: 20px;
@@ -315,7 +323,9 @@ em {
 
 .show .project-wrapper .project-content .arrow {
   width: 20px;
+  min-width: 20px;
   height: 20px;
+  min-height: 20px;
   margin-left: 10px;
   border-right: 1px solid #474444;
   border-bottom: 1px solid #474444;

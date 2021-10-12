@@ -25,7 +25,9 @@ object Tags:
       extends Element:
     val renderShortened = false
     def render() =
-      var attrs = attributes.toSeq.map((k, v) => s"$k=\"$v\"").mkString(" ")
+      var attrs = attributes.toSeq
+        .map((k, v) => if (v != LoneAttribute) s"$k=\"$v\"" else k)
+        .mkString(" ")
       var space = if attrs.length > 0 then " " else ""
       if (renderShortened) then s"<$tagName$space$attrs/>"
       else s"<$tagName$space$attrs>${children.map(_.render()).mkString("")}</$tagName>"
@@ -65,7 +67,7 @@ object Tags:
   def a = Tag("a")
   def figcaption = Tag("figcaption")
   def em = Tag("em")
-  def hr = Tag("hr")
+  def hr = ShortTag("hr")
   def br = ShortTag("br")
   def <>(children: Element*) = Fragment(children)
 
@@ -85,3 +87,8 @@ def sanitize(htmlString: String) =
     .replaceSections("\\[|\\]", t => Link(t).render())
     .replaceSections("\\`", t => s"<code>$t</code>")
     .replace("--", "&mdash;")
+
+case object LoneAttribute
+
+object attr:
+  def /(attribute: String) = (attribute, LoneAttribute)
