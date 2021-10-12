@@ -25,6 +25,7 @@ object Homepage:
       ),
       link("rel" -> "stylesheet", "href" -> "minireset.css"),
       link("rel" -> "stylesheet", "href" -> "dist/styles.css"),
+      link("rel" -> "icon", "href" -> "icons/favicon.ico"),
       title / "Dan Cascaval",
       script("src" -> "dist/actions.js"),
       script("src" -> "dist/live.js")
