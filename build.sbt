@@ -18,7 +18,9 @@ lazy val portfolio = crossProject(JSPlatform, JVMPlatform)
     )
   )
   .jvmSettings(
-    run / fork := true
+    run / fork := true,
+    assembly / mainClass := Some("portfolio.Main"),
+    assembly / assemblyJarName := "generate.jar"
   )
   .jsSettings(
     // Scala Deps

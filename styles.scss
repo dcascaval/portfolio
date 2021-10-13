@@ -162,11 +162,10 @@ body {
     &.active {
       cursor: auto;
       color: $background;
-      // border: 2px solid $green;
     }
 
-    &:hover:not(.active) {
-      // border: 2px solid $foreground;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
@@ -179,6 +178,10 @@ a {
 
   &:hover {
     border-bottom: 1px solid $green-dark;
+  }
+
+  &.nohover {
+    border-bottom: none !important;
   }
 }
 

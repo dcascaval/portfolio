@@ -7,7 +7,18 @@ object HTMLPage:
     s"<html>${header.render()}${body.render()}</html>"
 
 object Homepage:
-  val header =
+  def header(production: Boolean) =
+    val scripts =
+      if (!production)
+        Seq(
+          script("src" -> "dist/live.js"),
+          script("src" -> "js/target/scala-3.0.2/portfolio-fastopt.js")
+        )
+      else
+        Seq(
+          script("src" -> "dist/interaction.js")
+        )
+
     head(
       meta("charset" -> "utf-8"),
       meta("name" -> "viewport", "content" -> "width=device-width, initial-scale=1.0, shrink-to-fit=no"),
@@ -25,11 +36,12 @@ object Homepage:
       ),
       link("rel" -> "stylesheet", "href" -> "minireset.css"),
       link("rel" -> "stylesheet", "href" -> "dist/styles.css"),
-      link("rel" -> "icon", "href" -> "icons/favicon.ico"),
+      link("rel" -> "icon", "href" -> "icons/favicon.svg"),
+      link("rel" -> "mask-icon", "href" -> "icons/favicon.svg", "color" -> "#f6f7ef"),
+      link("rel" -> "apple-touch-icon", "href" -> "icons/apple-touch-icon.png"),
       title / "Dan Cascaval",
       script("src" -> "dist/actions.js"),
-      script("src" -> "dist/live.js"),
-      script("src" -> "js/target/scala-3.0.2/portfolio-fastopt.js")
+      <>(scripts*)
     )
 
   def navtab(name: String) =
@@ -85,7 +97,7 @@ object Homepage:
       )
     )
 
-  def render() = HTMLPage.render(header, content)
+  def render(production: Boolean) = HTMLPage.render(header(production), content)
 
 object Main extends App:
   import java.io.{File, PrintWriter}
@@ -96,6 +108,6 @@ object Main extends App:
     finally { p.close() }
 
   writeToFile("../index.html")(
-    Homepage.render()
+    Homepage.render(true)
   )
   println(br.render())

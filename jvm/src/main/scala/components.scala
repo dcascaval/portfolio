@@ -7,8 +7,8 @@ trait Component extends Element:
   def render() = value.render()
 
 def LinkIcon(key: String) =
-  a("href" -> LinkContext(key), "target" -> "_blank")(
-    img("src" -> s"icons/$key.svg")
+  a("nohover")("href" -> LinkContext(key), "target" -> "_blank")(
+    img("src" -> s"icons/${key.toLowerCase()}.min.svg")
   )
 
 def Link(key: String) =
@@ -27,7 +27,9 @@ object t:
   def /(content: String) = TextContent(content)
 
 def post(title: String, subtitle: String)(children: Element*) =
-  div("project-wrapper")("onclick" -> "expand(event)")(
+  section(id = title.toLowerCase().replace(" ", ""), cls = "project-wrapper")(
+    "onclick" -> "expand(event)"
+  )(
     div("project-title") / title,
     div("project-content expand")(
       div("subtitle")(

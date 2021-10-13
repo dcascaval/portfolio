@@ -195,6 +195,10 @@ body {
   color: #474444;
 }
 
+.navbar li:hover {
+  text-decoration: underline;
+}
+
 a {
   color: #35ab53;
   text-decoration: none;
@@ -205,6 +209,10 @@ a {
 
 a:hover {
   border-bottom: 1px solid #35ab53;
+}
+
+a.nohover {
+  border-bottom: none !important;
 }
 
 .main-content {
