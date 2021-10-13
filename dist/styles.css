@@ -162,6 +162,8 @@ body {
 }
 
 .navbar .floater {
+  margin-left: -10vw;
+  width: 100vw;
   position: absolute;
   z-index: 1;
   pointer-events: visible;

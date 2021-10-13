@@ -35,22 +35,29 @@ object Main extends App:
   document.addEventListener(
     "DOMContentLoaded",
     _ =>
+      val r = 24
+
       val floater = document.querySelector(".floater").asInstanceOf[SVGElement]
       val path = floater.child("path")
       val outline = floater.child("path")
+      val projects = document.querySelector(".navbar #projects")
+      val resume = document.querySelector(".navbar #resume")
+      val playgound = document.querySelector(".navbar #playground")
+      val targets = Seq(projects, resume, playgound)
+      val widths = targets.map(_.getBoundingClientRect().width.toInt + (r * 2))
 
-      val baseY = 96 + 24 + 3
+      val y = 96 + 24 + 3
       val h = 80
-      val w = 164
-      val r = 24
+      val w = widths(0)
 
+      val initialLeft = targets(0).getBoundingClientRect().left.toInt - r
       path.attr(
-        "d" -> generateTabPath(0, baseY, w, h, r),
+        "d" -> generateTabPath(initialLeft, y, w, h, r),
         "fill" -> "#f6f7ef"
       )
 
       outline.attr(
-        "d" -> generateTabOutline(0, baseY, w, h, r),
+        "d" -> generateTabOutline(initialLeft, y, w, h, r),
         "fill" -> "#54ca72",
         "stroke" -> "black",
         "stroke-width" -> "0px"
@@ -61,12 +68,6 @@ object Main extends App:
         println(s"top = ${r.top}, r = ${r.right}, b = ${r.bottom}, l = ${r.left} ")
         r
 
-      printRect(document.querySelector(".navbar ul"))
-
-      val projects = document.querySelector(".navbar #projects")
-      val resume = document.querySelector(".navbar #resume")
-      val targets = Seq(projects, resume)
-
       var currentIndex = 0
 
       targets.zipWithIndex.map((target, i) =>
@@ -74,14 +75,15 @@ object Main extends App:
           "click",
           _ =>
             if (i != currentIndex) then
-              val baseX = targets(0).getBoundingClientRect().left
               val r1 = targets(currentIndex).getBoundingClientRect()
               val r2 = targets(i).getBoundingClientRect()
-              val startX = (r1.left - baseX).toInt
-              val endX = (r2.left - baseX).toInt
+              val startWidth = widths(currentIndex)
+              val endWidth = widths(i)
+              val startX = r1.left.toInt - r
+              val endX = r2.left.toInt - r
 
               currentIndex = i
-              animatePoint(250, startX, baseY, endX, baseY)((x, y) =>
+              animatePoint(250, startX, startWidth, endX, endWidth)((x, w) =>
                 path.attr("d", generateTabPath(x, y, w, h, r))
                 outline.attr("d", generateTabOutline(x, y, w, h, r))
               )

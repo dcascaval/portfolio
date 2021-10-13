@@ -52,7 +52,8 @@ object Homepage:
       svg("floater"),
       ul(
         navtab("Projects")(cls = "active", id = "projects"),
-        navtab("Resume")(id = "resume")
+        navtab("Resume")(id = "resume"),
+        navtab("Playground")(id = "playground")
       )
     )
 
@@ -92,7 +93,8 @@ object Homepage:
               Join,
               DesignComputation,
               TeachingAssistant
-            )
+            ),
+            section(id = "playground", cls = "fade")
           )
         )
       )
