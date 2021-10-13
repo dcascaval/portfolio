@@ -5,17 +5,35 @@ import Tags.*
 object Intro extends Component:
   val value = <>(
     content /
-      "I'm a PhD student in Computer Science at the [University of Washington] advised by [Ras Bodik] and [Adriana Schulz].",
+      "I'm a second-year PhD student in Computer Science at the [University of Washington] advised by [Ras Bodik] and [Adriana Schulz].",
     content /
       "I am working on problems in computational geometry and shape manipulation using program synthesis and related tools. Right now, that includes representing 3D CAD models as programs and developing synthesis-based tools for *bidirectional editing*, *constraint exploration*, and *design optimization*. I am always looking for new applications for this work, particularly in the domain of improving architecture, design, and the built environment.",
     content /
       "My past work focuses on applications of parallel computing and constraint-based geometric modeling tools, as well as research in combining computation and fabrication to make more responsive environments. I completed my undergraduate degree as a dual major in both *Architecture* and *Computer Science*, and I'm still working to intersect them -- if you're interested in combining these fields, please do reach out!"
   )
 
+object Bidir extends Component:
+  val value = post(
+    title = "Bidirectional Editing",
+    subtitle = "Differentiable 3D CAD Programs for Geometry Manipulation.",
+    link = TitleLink("bidirectional-paper", "Full Paper"),
+    year = "2021"
+  )(
+    img("src" -> "images/bench-teaser.png"),
+    vspace,
+    spaced(
+      t / "Manipulating parametric CAD programs purely by their parameters can be an arduous ordeal. On models with many parameters, it's difficult to tell what effect a parameter change will have on the geometric output, and to express design intent in terms of a model's parameters.",
+      t / "This project offers a *bidirectional interface*, where users can drag vertices on the geometry, and the model's parameters will update such that the vertex appears in the specified location. As a result, users can interchangably interact with both the generated geometry and underlying program, using whichever representation is more convenient for a given edit.",
+      t / "Under the hood, the project performs a series of optimizations according to different heuristics -- after all, while it's clear where the target vertices should go, there might be many ways to get there, or none. In these cases we aim to get as close as possible, offering a range of possible model alternatives for the user to select between in a rapid iteration loop. We are able to solve the optimizations quickly and at scale by providing a *domain-specific language* for CAD that is limited to operations that can be automatically differentiated. This takes the form of a plugin for [Blender] that exposes a scripting interface inline."
+    )
+  )
+
 object Impala extends Component:
   val value = post(
     title = "Impala",
-    subtitle = " Parallel, high performance component library for Grasshopper3D."
+    subtitle = "Parallel, high performance component library for Grasshopper3D.",
+    link = TitleLink("impala-repo", "Repository"),
+    year = "2018"
   )(
     img("src" -> "images/icon_banner_3.png"),
     spaced(
@@ -40,8 +58,10 @@ object DAG extends Component:
   val dag = <>(br, Image("dag") / "Compiler Structure.", br)
 
   val value = post(
-    title = "DAG",
-    subtitle = "Data-parallel programming language compiled for GPU."
+    title = "Dag",
+    subtitle = "Data-parallel programming language compiled for GPU.",
+    link = TitleLink("dag-repo", "Repository"),
+    year = "2018"
   )(
     img("src" -> "images/julia_render.png"),
     vspace,
@@ -76,7 +96,9 @@ object NBBJ extends Component:
 object SentientConcrete extends Component:
   val value = post(
     title = "Sentient Concrete",
-    subtitle = "Environmentally-responsive surface geometry."
+    subtitle = "Environmentally-responsive surface geometry.",
+    link = TitleLink("CAADRIA18", "Full Paper"),
+    year = "2017"
   )(
     t / "Under the supervision of [Dana Cupkova] and [Daragh Byrne].",
     Image("sentient-regions") /
@@ -92,7 +114,5 @@ object SentientConcrete extends Component:
     ),
     vspace,
     p("citation") /
-      "Cupkova, D. and Byrne, D., Cascaval, D. 2018. SENTIENT CONCRETE: Developing Embedded Thermal and Thermochromic Interactions for Architecture and Built Environment. In Proceedings of the 23rd International Conference of the Association for Computer-Aided Architectural Design Research in Asia (CAADRIA) 2018, Hong Kong.",
-    br,
-    Link("CAADRIA18") / "PDF"
+      "Cupkova, D. and Byrne, D., Cascaval, D. 2018. SENTIENT CONCRETE: Developing Embedded Thermal and Thermochromic Interactions for Architecture and Built Environment. In Proceedings of the 23rd International Conference of the Association for Computer-Aided Architectural Design Research in Asia (CAADRIA) 2018, Hong Kong."
   )

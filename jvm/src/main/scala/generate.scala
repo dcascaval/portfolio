@@ -82,6 +82,7 @@ object Homepage:
           div("main-content")(
             section(id = "projects", cls = "show")(
               Intro,
+              Bidir,
               Impala,
               DAG,
               NBBJ,
@@ -99,7 +100,7 @@ object Homepage:
 
   def render(production: Boolean) = HTMLPage.render(header(production), content)
 
-object Main extends App:
+object Main:
   import java.io.{File, PrintWriter}
 
   def writeToFile(file: String)(strings: String*) =
@@ -107,7 +108,9 @@ object Main extends App:
     try { for (string <- strings) p.println(string) }
     finally { p.close() }
 
-  writeToFile("../index.html")(
-    Homepage.render(production = true)
-  )
-  println(br.render())
+  def main(args: Array[String]): Unit =
+    val production = args.length > 0 && (args(0) == "production")
+    writeToFile("../index.html")(
+      Homepage.render(production)
+    )
+    println(br.render())

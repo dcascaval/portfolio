@@ -294,6 +294,28 @@ em {
   z-index: 2;
 }
 
+.show .project-wrapper .project-title div {
+  display: inline-block;
+}
+
+.show .project-wrapper .project-title div.project-link {
+  margin-left: 6px;
+  font-weight: 400;
+  color: #47444488;
+}
+
+.show .project-wrapper .project-title p {
+  display: inline-block;
+  font-weight: 700;
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+
+.show .project-wrapper .project-title a {
+  font-weight: 700;
+  font-size: 26px;
+}
+
 .show .project-wrapper .project-content {
   font-size: 20px;
   font-family: "Roboto Slab", serif;

@@ -256,6 +256,26 @@ em {
     position: relative;
     display: inline;
     z-index: 2;
+
+    div {
+      display: inline-block;
+      &.project-link {
+        margin-left: 6px;
+        font-weight: 400;
+        color: #47444488;
+      }
+    }
+
+    p {
+      display: inline-block;
+      font-weight: 700;
+      transform: translateY(1px);
+    }
+
+    a {
+      font-weight: 700;
+      font-size: 26px;
+    }
   }
 
   .project-content {

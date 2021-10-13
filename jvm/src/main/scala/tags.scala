@@ -39,12 +39,14 @@ object Tags:
       Tag(tagName, attributes.updateAttribute("class", cls).updateAttribute("id", id), children)
     def /(textContent: String) =
       Tag(tagName, attributes, children = Seq(TextContent(textContent)))
+    def rawContent(textContent: String) =
+      Tag(tagName, attributes, children = Seq(TextContent(textContent, raw = true)))
 
   class ShortTag(tagName: String) extends Tag(tagName):
     override val renderShortened = true
 
-  case class TextContent(rawContent: String) extends Element:
-    val content = sanitize(rawContent)
+  case class TextContent(rawContent: String, raw: Boolean = false) extends Element:
+    val content = if (!raw) sanitize(rawContent) else rawContent
     def render() = content
 
   case class Fragment(children: Seq[Element]) extends Element:
