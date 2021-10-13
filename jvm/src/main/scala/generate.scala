@@ -108,6 +108,6 @@ object Main extends App:
     finally { p.close() }
 
   writeToFile("../index.html")(
-    Homepage.render(true)
+    Homepage.render(production = true)
   )
   println(br.render())

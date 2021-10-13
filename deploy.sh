@@ -1,9 +1,7 @@
-# copy the:
-# - Generated `index.html` file
-# - `actions.js` file
-# - Generated `styles.css` file
-# - Icons, manifest & google verification
-#
-# to the target directory.
-# Additionally, remove `live.js` from the HTML file
-# (Or invoke it to be generated without said.)
+# Copies the generated JS to dist.
+# Before this script runs:
+# - Index HTML that includes this file should be generated
+#    (`sbt portfolioJVM/run (with prodction = true)`)
+# - Optimized javascript should be generated.
+#   (`sbt fullOptJS`)
+cp js/target/scala-3.0.2/portfolio-opt.js dist/interaction.js
