@@ -36,9 +36,9 @@ object Homepage:
       ),
       link("rel" -> "stylesheet", "href" -> "minireset.css"),
       link("rel" -> "stylesheet", "href" -> "dist/styles.css"),
-      link("rel" -> "icon", "href" -> "icons/favicon.svg"),
-      link("rel" -> "mask-icon", "href" -> "icons/favicon.svg", "color" -> "#f6f7ef"),
-      link("rel" -> "apple-touch-icon", "href" -> "icons/apple-touch-icon.png"),
+      link("rel" -> "icon", "href" -> "icon/favicon.svg"),
+      link("rel" -> "mask-icon", "href" -> "icon/favicon.svg", "color" -> "#f6f7ef"),
+      link("rel" -> "apple-touch-icon", "href" -> "icon/apple-touch-icon.png"),
       title / "Dan Cascaval",
       script("src" -> "dist/actions.js"),
       <>(scripts*)

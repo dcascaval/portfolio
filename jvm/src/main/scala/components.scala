@@ -8,7 +8,7 @@ trait Component extends Element:
 
 def LinkIcon(key: String) =
   a("nohover")("href" -> LinkContext(key), "target" -> "_blank")(
-    img("src" -> s"icons/${key.toLowerCase()}.min.svg")
+    img("src" -> s"icon/${key.toLowerCase()}.min.svg")
   )
 
 def TitleLink(key: String, text: String) =
