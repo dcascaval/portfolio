@@ -38,16 +38,16 @@ def post(title: String, subtitle: String, link: Option[Element] = None, year: Op
   val yearString: String =
     year.map(y => s" <div>(<p>$y</p>)</div>").getOrElse("")
   val linkElement = link.map(e => div("project-link")(r / (" " + e))).getOrElse(<>())
+  val subtitleElement = div.rawContent(subtitle + linkElement)
+  println(subtitleElement)
 
   section(id = title.toLowerCase().replace(" ", ""), cls = "project-wrapper")(
     "onclick" -> "expand(event)"
   )(
-    (div("project-title") / (title + yearString))(
-      linkElement
-    ),
+    div("project-title") / (title + yearString),
     div("project-content expand")(
       div("subtitle")(
-        p / subtitle,
+        subtitleElement,
         div("arrow expand")
       ),
       div("project-details expand")("onclick" -> "swallow(event)")(

@@ -48,6 +48,15 @@ body {
     margin-bottom: 0px !important;
     align-self: flex-start !important;
     z-index: unset !important;
+    min-width: 100% !important;
+    justify-content: space-evenly !important;
+  }
+
+  .project-title {
+    font-size: 24px !important;
+    margin-left: 0 !important;
+    width: 350px !important;
+    min-width: 350px !important;
   }
 }
 
@@ -259,11 +268,6 @@ em {
 
     div {
       display: inline-block;
-      &.project-link {
-        margin-left: 6px;
-        font-weight: 400;
-        color: #47444488;
-      }
     }
 
     p {
@@ -316,6 +320,15 @@ em {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+
+      div {
+        .project-link {
+          display: inline;
+          margin-left: 6px;
+          font-weight: 400;
+          color: #47444488;
+        }
+      }
     }
 
     .arrow {

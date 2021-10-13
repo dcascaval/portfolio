@@ -16,7 +16,7 @@ object Bidir extends Component:
   val value = post(
     title = "Bidirectional Editing",
     subtitle = "Differentiable 3D CAD Programs for Geometry Manipulation.",
-    link = TitleLink("bidirectional-paper", "Full Paper"),
+    link = TitleLink("bidirectional-paper", "Paper"),
     year = "2021"
   )(
     img("src" -> "images/bench-teaser.png"),
@@ -32,7 +32,7 @@ object Impala extends Component:
   val value = post(
     title = "Impala",
     subtitle = "Parallel, high performance component library for Grasshopper3D.",
-    link = TitleLink("impala-repo", "Repository"),
+    link = TitleLink("impala-repo", "Code"),
     year = "2018"
   )(
     img("src" -> "images/icon_banner_3.png"),
@@ -60,7 +60,7 @@ object DAG extends Component:
   val value = post(
     title = "Dag",
     subtitle = "Data-parallel programming language compiled for GPU.",
-    link = TitleLink("dag-repo", "Repository"),
+    link = TitleLink("dag-repo", "Code"),
     year = "2018"
   )(
     img("src" -> "images/julia_render.png"),
@@ -78,7 +78,7 @@ object NBBJ extends Component:
 
   val value = post(
     title = "Modeling Tools",
-    subtitle = "Constraint-Based Modeling: Panel Designer & Façade Painter"
+    subtitle = "Constraint-Based Modeling: Panel Designer & Façade Painter."
   )(
     spaced(
       t / "Under the supervision of [Nate Holland]",
@@ -97,7 +97,7 @@ object SentientConcrete extends Component:
   val value = post(
     title = "Sentient Concrete",
     subtitle = "Environmentally-responsive surface geometry.",
-    link = TitleLink("CAADRIA18", "Full Paper"),
+    link = TitleLink("CAADRIA18", "Paper"),
     year = "2017"
   )(
     t / "Under the supervision of [Dana Cupkova] and [Daragh Byrne].",
