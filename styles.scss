@@ -176,6 +176,10 @@ body {
       color: $background;
     }
 
+    &:not(.active) {
+      opacity: 0.96;
+    }
+
     &:hover {
       text-decoration: underline;
     }

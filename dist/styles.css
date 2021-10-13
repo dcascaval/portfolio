@@ -209,6 +209,10 @@ body {
   color: #474444;
 }
 
+.navbar li:not(.active) {
+  opacity: 0.96;
+}
+
 .navbar li:hover {
   text-decoration: underline;
 }

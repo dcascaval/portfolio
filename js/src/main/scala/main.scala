@@ -50,7 +50,7 @@ object Main extends App:
       val h = 64
       val w = widths(0)
 
-      val initialLeft = targets(0).getBoundingClientRect().left.toInt - r
+      val initialLeft = targets(0).getBoundingClientRect().left.toInt - r - 6
       path.attr(
         "d" -> generateTabPath(initialLeft, y, w, h, r),
         "fill" -> "#f6f7ef"
@@ -79,8 +79,8 @@ object Main extends App:
               val r2 = targets(i).getBoundingClientRect()
               val startWidth = widths(currentIndex)
               val endWidth = widths(i)
-              val startX = r1.left.toInt - r
-              val endX = r2.left.toInt - r
+              val startX = r1.left.toInt - r - 6
+              val endX = r2.left.toInt - r - 6
 
               currentIndex = i
               animatePoint(250, startX, startWidth, endX, endWidth)((x, w) =>
