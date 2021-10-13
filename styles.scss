@@ -151,10 +151,11 @@ body {
   }
 
   ul {
-    min-width: 300px;
+    min-width: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    transform: translateY(10px);
     z-index: 2;
   }
 

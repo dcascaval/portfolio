@@ -44,10 +44,10 @@ object Main extends App:
       val resume = document.querySelector(".navbar #resume")
       val playgound = document.querySelector(".navbar #playground")
       val targets = Seq(projects, resume, playgound)
-      val widths = targets.map(_.getBoundingClientRect().width.toInt + (r * 2))
+      val widths = targets.map(_.getBoundingClientRect().width.toInt + (r * 2 + 16))
 
       val y = 96 + 24 + 3
-      val h = 80
+      val h = 64
       val w = widths(0)
 
       val initialLeft = targets(0).getBoundingClientRect().left.toInt - r
