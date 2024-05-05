@@ -63,7 +63,7 @@ object Homepage:
       ),
       div("bio")(
         p("name") / "Dan Cascaval",
-        p("email") / "cascaval@cs.washington.edu"
+        p("email") / "dan@cascaval.org"
       ),
       p("links")(
         LinkIcon("Github"),
