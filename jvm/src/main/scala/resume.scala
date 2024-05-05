@@ -21,18 +21,7 @@ object Join extends Component:
   )(
     t / "*[Join]* is a San Francisco-based software startup providing web-based preconstruction collaboration tools for the construction industry, bringing together owners, general contractors, and design teams. Construction projects are highly complex and custom, and construction professionals are known for their dedication to the field and for the high demands they place on their tools of choice.",
     vspace,
-    t / "While at Join, I was part of a small, fast-moving product team with a strong user focus. Technically, I worked on every part of the stack --",
-    ul(
-      li /
-        "*Optimizing* Postgres queries to improve whole-application performance",
-      li /
-        "*Extending and tuning* our Golang backend to support new product features",
-      li /
-        "*Rebuilding and automating* our testing infrastructure to support tests that are faster, easier to write, and more reliable",
-      li /
-        "*Designing and iterating* on highly-interactive user-facing web components for cost manipulation and tracking"
-    ),
-    t / "all with the goal of bringing users an efficient, customizable and clear way to manage their projects and tame the complexity of decision making and estimating."
+    t / "While at Join, I was part of a small, fast-moving product team with a strong user focus. Technically, I worked on every part of the stack -- optimizing Postgres queries, rebuilding and automating testing infrastructure, and designing and iterating on highly-interactive user-interface components for cost manipulation and tracking. I gained an appreciation for the complexity of construction project management and the importance of clarity in software in addition to correctness.",
   )
 
 object DesignComputation extends Component:
@@ -40,16 +29,11 @@ object DesignComputation extends Component:
     title = "NBBJ",
     subtitle = "Design Computation Intern, Summer 2018"
   )(
-    t / "*[NBBJ]* is a world-class architecture firm based in Seattle, innovating in sustainability and design technology. I interned on the *Design Computation* team, tasked with understanding architectural design workflows and finding ways to make design software more efficient, scalable, and user-friendly. As part of the team, I worked on:",
-    ul(
-      li /
-        "*Automating* facade-modeling tools to handle patterns and allow designers to quickly iterate and optimize complex forms.",
-      li /
-        "*Researching* how plugins to surface-modeling tools like Rhino can allow for a hybrid of direct and constraint-based modeling strategies.",
-      li /
-        "*Developing* tools and strategies to aid interoperability between software used both within the firm and externally."
-    ),
-    t / "I learned a lot about the dark arts of CAD in practice, and witnessed the immense complexity of building-projects first hand, as well as a finer appreciation for the *impact that good design can have* on all of our lives."
+    t / "*[NBBJ]* is a world-class architecture firm based in Seattle, innovating in sustainability and design technology. I interned on the *Design Computation* team, tasked with understanding architectural design workflows and finding ways to make design software more efficient, scalable, and user-friendly.",
+    vspace,
+    t / "As part of the team, I worked on automating facade-modeling tools to handle patterns and allow designers to quickly iterate and optimize complex forms. I researched how plugins to surface-modeling tools like Rhino can allow for a hybrid of direct and constraint-based modeling strategies, and worked on developing tools and strategies to aid interoperability between software used both within the firm and externally.",
+    vspace,
+    t / "I learned a lot about the dark arts of CAD in practice, and witnessed the immense complexity of building-projects first hand, as well as a finer appreciation for the impact that good design can have on all of our lives."
   )
 
 object TeachingAssistant extends Component:
