@@ -90,6 +90,7 @@ object Homepage:
               SentientConcrete
             ),
             section(id = "resume", cls = "fade")(
+              Branch,
               Join,
               DesignComputation,
               TeachingAssistant

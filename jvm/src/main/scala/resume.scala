@@ -2,14 +2,26 @@ package portfolio
 
 import Tags.*
 
+object Branch extends Component: 
+  val hiring = Link("branch-jobs") / "hiring"
+
+  val value = post(
+    title = "Branch", 
+    subtitle = "Software Developer, 2023-present"
+  )(
+    t / "*[Branch]* is an AEC software startup embedded within [StructureCraft], focusing on mass-timber fabrication detailing. Branch models entire building structures down to the nuts and bolts, and has been used to detail hundreds of thousands of square feet of mass-timber buildings. Every building project is different, so Branch focuses on performance and scriptability to allow for a wide variety of design and fabrication workflows.",
+    vspace,
+    t / s"On the Branch team, I work on the core product, written in C# and Typescript. I design and execute technical features, spanning the spectrum from graphics and display infrastructure, to new parametric modeling primitives, and the design of a flexible relationship system that powers Branch's modeling capabilities. Branch is $hiring, so if this sounds like interesting work to you, we should chat.",
+  )
+
 object Join extends Component:
   val value = post(
     title = "Join",
     subtitle = "Software Engineer, 2019-2020"
   )(
-    t / "*[Join]* is a San Francisco-based software startup providing intelligent collaboration tools for the construction industry. Construction is an *incredibly complex industry* with many moving parts, and construction professionals are known for their dedication to the field and for the high demands they place on their tools of choice.",
+    t / "*[Join]* is a San Francisco-based software startup providing web-based preconstruction collaboration tools for the construction industry, bringing together owners, general contractors, and design teams. Construction projects are highly complex and custom, and construction professionals are known for their dedication to the field and for the high demands they place on their tools of choice.",
     vspace,
-    t / "While at Join, I worked as part of a small, fast-moving product team shipping production-quality code with an eye for making a positive impact in the lives of our users. I had the chance to work on every part of the stack --",
+    t / "While at Join, I was part of a small, fast-moving product team with a strong user focus. Technically, I worked on every part of the stack --",
     ul(
       li /
         "*Optimizing* Postgres queries to improve whole-application performance",
@@ -20,7 +32,7 @@ object Join extends Component:
       li /
         "*Designing and iterating* on highly-interactive user-facing web components for cost manipulation and tracking"
     ),
-    t / "all with the goal to bring users an efficient, customizable and clear way to manage their projects and tame the complexity of construction."
+    t / "all with the goal of bringing users an efficient, customizable and clear way to manage their projects and tame the complexity of decision making and estimating."
   )
 
 object DesignComputation extends Component:

@@ -4,7 +4,7 @@ import Tags.*
 
 object Intro extends Component:
   val value = <>(
-    content / "I'm a software developer working on design tools for AEC. Right now I work on [Branch], a platform for concept design and fabrication detailing mass timber buildings. I'm also a PhD student at the University of Washington, advised by [Ras Bodik] and [Adriana Schulz], where I research interfaces for program-based design tools.",
+    content / "I'm a software developer working on design tools for Architecture, Engineering, and Construction (AEC). Right now I work on [Branch], a platform for concept design and fabrication detailing mass timber buildings. I'm also a PhD student at the University of Washington, advised by [Ras Bodik] and [Adriana Schulz], where I research interfaces for program-based design tools.",
     content /
      "I completed my undergraduate degree as a dual major in both *Architecture* and *Computer Science*, and I'm still working to intersect them -- if you're interested in software for the AEC space, please shoot me an email."
   )

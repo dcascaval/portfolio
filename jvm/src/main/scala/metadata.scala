@@ -43,12 +43,14 @@ object LinkContext
       "lineage-demo" -> "https://dcascaval.github.io/lineage/",
       "lineage-docs" -> "https://github.com/dcascaval/lineage-based-cad-referencing/blob/main/language-docs.md",
       "Blender" -> "https://www.blender.org/",
+      "Scala.js" -> "https://www.scala-js.org/",
       "Github" -> "https://github.com/dcascaval",
       "Instagram" -> "https://www.instagram.com/de.methodic/",
       "LinkedIn" -> "https://www.linkedin.com/in/dan-cascaval/",
       "Mail" -> "mailto:dan@cascaval.org",
       "Branch" -> "https://www.branch3d.com/", 
-      "Scala.js" -> "https://www.scala-js.org/",
+      "branch-jobs" -> "https://structurecraft.com/hiring/#branch",
+      "StructureCraft" -> "https://structurecraft.com/",
     )
 
 object ImageContext
