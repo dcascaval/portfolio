@@ -4,12 +4,28 @@ import Tags.*
 
 object Intro extends Component:
   val value = <>(
+    content / "I'm a software developer working on design tools for AEC. Right now I work on [Branch], a platform for concept design and fabrication detailing mass timber buildings. I'm also a PhD student at the University of Washington, advised by [Ras Bodik] and [Adriana Schulz], where I research interfaces for program-based design tools.",
     content /
-      "I'm a third-year PhD student in Computer Science at the [University of Washington] advised by [Ras Bodik] and [Adriana Schulz].",
-    content /
-      "I am working on problems in computational geometry and shape manipulation to build program-based design tools. Right now, that includes representing 3D CAD models as programs and developing interfaces for *bidirectional editing*, *constraint exploration*, and *design optimization*. I am always looking for new applications for this work, particularly in the domain of improving architecture, design, and the built environment.",
-    content /
-      "My past work focuses on applications of parallel computing and constraint-based geometric modeling tools, as well as research in combining computation and fabrication to make more responsive environments. I completed my undergraduate degree as a dual major in both *Architecture* and *Computer Science*, and I'm still working to intersect them -- if you're interested in combining these fields, please do reach out!"
+     "I completed my undergraduate degree as a dual major in both *Architecture* and *Computer Science*, and I'm still working to intersect them -- if you're interested in software for the AEC space, please shoot me an email."
+  )
+
+object Lineage extends Component: 
+  val demo = Link("lineage-demo") / "live demo"
+  val docs = Link("lineage-docs") / "here" 
+
+  val value = post(
+    title = "CAD Referencing", 
+    subtitle = "A lineage-based system for referencing 3D elements in CAD models.",
+    link = TitleLink("lineage-paper", "Paper"),
+    year = "2023"
+  )(
+    img("src" -> "images/lineage-teaser.png"),
+    vspace, 
+    spaced(
+      t / "Being able to *refer* to elements in a CAD model is a fundamental operation for many design tasks. Existing CAD tools allow users to click an element (point, edge, or shape), and when model parameters change, use heuristics to determine which element that refers to. While this can work, it is error-prone and breaks in surprising and subtle ways, making it difficult to design a design space to explore.",
+      t / "This project introduces a referencing system for identifying elements based on the concept of *lineage*, a constructed graph of the model's computational history. The lineage graph can be queried to identify elements in a way that is robust to both parameter and program edits. This makes the fundamental selection primitive user-defined, robust, and introspectable; bringing us a step closer to being able to realize the dream of interleaving manual and parametric modeling.",
+      t / s"This system is implemented in Scala, using [Scala.js] to compile it to the web. Check out a $demo of the language running in the browser. Documentation on language syntax and semantics is available $docs."
+    )
   )
 
 object Bidir extends Component:

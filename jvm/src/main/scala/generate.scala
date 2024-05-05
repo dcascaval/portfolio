@@ -82,6 +82,7 @@ object Homepage:
           div("main-content")(
             section(id = "projects", cls = "show")(
               Intro,
+              Lineage,
               Bidir,
               Impala,
               DAG,

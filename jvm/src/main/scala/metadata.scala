@@ -39,11 +39,16 @@ object LinkContext
       "Join" -> "https://join.build",
       "robarch-paper" -> "https://link.springer.com/article/10.1007/s41693-018-0014-x",
       "bidirectional-paper" -> "https://arxiv.org/pdf/2110.01182.pdf",
+      "lineage-paper" -> "https://dcascaval.github.io/lineage-based-cad-referencing-pldi23.pdf",
+      "lineage-demo" -> "https://dcascaval.github.io/lineage/",
+      "lineage-docs" -> "https://github.com/dcascaval/lineage-based-cad-referencing/blob/main/language-docs.md",
       "Blender" -> "https://www.blender.org/",
       "Github" -> "https://github.com/dcascaval",
       "Instagram" -> "https://www.instagram.com/de.methodic/",
       "LinkedIn" -> "https://www.linkedin.com/in/dan-cascaval/",
-      "Mail" -> "mailto:cascaval@cs.washington.edu"
+      "Mail" -> "mailto:dan@cascaval.org",
+      "Branch" -> "https://www.branch3d.com/", 
+      "Scala.js" -> "https://www.scala-js.org/",
     )
 
 object ImageContext
