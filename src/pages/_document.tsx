@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <title>Dan Cascaval</title>
         <link rel="icon" href="/favicon.svg" />
         <link rel="mask-icon" href="/favicon.svg" color="#f6f7ef" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

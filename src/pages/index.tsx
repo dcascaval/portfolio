@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,10 @@ type PageType = "projects" | "resume";
 export default function Home() {
   const [page, setPage] = useState<PageType>("projects");
   const [fade, setFade] = useState(false);
+
+  useEffect(() => {
+    document.title = "Dan Cascaval";
+  }, []);
 
   const transition = (target: PageType) => {
     if (target === page) return;
@@ -47,7 +51,7 @@ export default function Home() {
       <section
         className={clsx(
           "w-full max-w-5xl transition-opacity duration-500",
-          fade && "opacity-0",
+          fade && "opacity-0"
         )}
       >
         {page === "projects" && projects}
