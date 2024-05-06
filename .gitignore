@@ -20,3 +20,5 @@ yarn.lock
 
 # MacOS
 .DS_Store
+
+.next/
