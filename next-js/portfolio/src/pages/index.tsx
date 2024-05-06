@@ -13,6 +13,8 @@ export default function Home() {
   const [fade, setFade] = useState(false);
 
   const transition = (target: PageType) => {
+    if (target === page) return;
+
     setFade(true);
     setTimeout(() => {
       setPage(target);

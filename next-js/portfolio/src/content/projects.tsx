@@ -3,15 +3,17 @@ import { Project, L, P } from "@/components/Project";
 
 type RegularImageProps = {
   href: string;
+  priority?: boolean;
 };
 
-const Regular = ({ href }: RegularImageProps) => (
+const Regular = ({ href, priority }: RegularImageProps) => (
   <Image
     src={href}
     className="dark:hue-rotate-180 dark:invert"
     alt="Project overview image"
     width={1000}
     height={500}
+    priority={priority}
   />
 );
 
@@ -56,7 +58,7 @@ export const projects = (
       description="Referring to 3D Elements in Parametric Models."
       linkText="PLDI Paper"
       linkTarget="https://dcascaval.github.io/lineage-based-cad-referencing-pldi23.pdf"
-      image={<Regular href="/lineage-teaser.png" />}
+      image={<Regular href="/lineage-teaser.png" priority={true} />}
     >
       <P>
         Referring to elements in a parametric CAD model is a fundamental

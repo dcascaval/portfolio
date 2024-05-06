@@ -34,6 +34,7 @@ export const Profile = () => (
         src="/profile.jpg"
         width={50}
         height={50}
+        priority
       />
     </div>
     <div className="px-4">

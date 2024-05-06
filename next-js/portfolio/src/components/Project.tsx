@@ -75,7 +75,7 @@ export const Project = ({
 };
 
 export const P = ({ children }: { children: ReactNode }) => (
-  <p className="mb-4 last:mb-0">{children}</p>
+  <div className="mb-4 last:mb-0">{children}</div>
 );
 
 type LProps = {
