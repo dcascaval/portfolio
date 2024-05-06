@@ -30,12 +30,12 @@ export const resumes = (
   <>
     <Project title="Branch" description="Software Developer (2023 - present)">
       <P>
-        {Branch} is an AEC software startup embedded within {SC}, focusing on
-        mass-timber fabrication detailing. Branch models entire building
-        structures down to the nuts and bolts, and has been used to detail
-        hundreds of thousands of square feet of mass-timber buildings. Every
-        building project is different, so Branch focuses on performance and
-        scriptability to allow for a wide variety of design and fabrication
+        <strong>{Branch}</strong> is an AEC software startup embedded within{" "}
+        {SC}, focusing on mass-timber fabrication detailing. Branch models
+        entire building structures down to the nuts and bolts, and has been used
+        to detail hundreds of thousands of square feet of mass-timber buildings.
+        Every building project is different, so Branch focuses on performance
+        and scriptability to allow for a wide variety of design and fabrication
         workflows.
       </P>
       <P>
@@ -49,12 +49,12 @@ export const resumes = (
     </Project>
     <Project title="Join" description="Software Engineer (2019 - 2020)">
       <P>
-        {Join} is a San Francisco-based software startup providing web-based
-        preconstruction collaboration tools for the construction industry,
-        bringing together owners, general contractors, and design teams.
-        Construction projects are highly complex and custom, and construction
-        professionals are known for their dedication to the field and for the
-        high demands they place on their tools of choice.
+        <strong>{Join}</strong> is a San Francisco-based software startup
+        providing web-based preconstruction collaboration tools for the
+        construction industry, bringing together owners, general contractors,
+        and design teams. Construction projects are highly complex and custom,
+        and construction professionals are known for their dedication to the
+        field and for the high demands they place on their tools of choice.
       </P>
       <P>
         While at Join, I was part of a small, fast-moving product team with a
@@ -96,8 +96,7 @@ export const resumes = (
     >
       <P>
         At Carnegie Mellon I was a research assistant under {Dana}, {JoshBard},
-        and
-        {Daragh}. This was the first time I was able to blend code and
+        and {Daragh}. This was the first time I was able to blend code and
         architecture outside of class, and I wrote some software that is still
         used in the labs today. This included work in:
         <ul className="list-disc">
@@ -130,8 +129,7 @@ export const resumes = (
           <li className="ml-4 mt-2">
             <strong>Principles of Software Construction (Fall 2018)</strong>, an
             undergraduate object-oriented software design and analysis course
-            with Profs.
-            {Charlie} and {JoshBloch}.
+            with Profs. {Charlie} and {JoshBloch}.
           </li>
           <li className="ml-4 mt-2">
             <strong>

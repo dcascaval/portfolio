@@ -14,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     document.title = "Dan Cascaval";
-  }, []);
+  });
 
   const transition = (target: PageType) => {
     if (target === page) return;
