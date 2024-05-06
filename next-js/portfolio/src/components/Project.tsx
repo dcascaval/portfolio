@@ -30,7 +30,7 @@ export const Project = ({
         !expanded && "border-l-transparent hover:border-l-transparent",
       )}
     >
-      <div className="absolute -top-[1.625rem] left-4 w-fit bg-white p-2 text-2xl font-bold dark:bg-zinc-800">
+      <div className="absolute -top-[1.625rem] left-4 w-fit bg-white p-2 text-2xl font-bold dark:bg-zinc-900">
         {title}
       </div>
       <div
