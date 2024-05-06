@@ -25,7 +25,7 @@ export const Project = ({
   return (
     <div
       className={clsx(
-        "group relative mt-10 w-full min-w-full border-l border-t border-gray-400 py-6 pl-4 transition-all duration-100 hover:border-green-500 md:pl-10",
+        "group relative mt-10 h-fit w-full min-w-full border-l border-t border-gray-400 py-6 pl-4 transition-all duration-100 hover:border-green-500 md:pl-10",
         expanded && "rounded-tl-2xl border-l",
         !expanded && "border-l-transparent hover:border-l-transparent",
       )}
@@ -61,7 +61,9 @@ export const Project = ({
       </div>
       <div
         className={clsx(
-          expanded ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0",
+          expanded
+            ? "h-full scale-y-100 opacity-100"
+            : "h-0 scale-y-0 opacity-0",
           "origin-top overflow-hidden transition-all duration-100",
         )}
       >
