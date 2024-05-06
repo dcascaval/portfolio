@@ -9,7 +9,10 @@ Modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
 To deploy:
 
-`bun run build`, commit & push, pull & run `./deploy.sh` on target machine
+`bun run build`, commit & push
+
+on target machine:
+`./clean.sh`, pull & run `./deploy.sh`
 
 ---
 
